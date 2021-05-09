@@ -11,3 +11,5 @@
 
 
 #### workflow diagram link - https://app.diagrams.net/?src=about#Hmohityede%2FCollage-Project%2Fmain%2FDocumentation%2FworkFlow%20Diagram.drawio
+
+#### sitemap diagram link - https://app.diagrams.net/?src=about#Hmohityede%2FCollage-Project%2Fmain%2FDocumentation%2FUntitled%20Diagram.drawio
