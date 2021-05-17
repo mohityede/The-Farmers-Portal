@@ -1,4 +1,4 @@
-# Collage-Project
+# The Farmers Portal
 
 ## Group Members
 - Mohit
@@ -6,7 +6,7 @@
 - Manisha
 - Gauri
 
-### Project documentation format
+## Project PPT format
 - <b>Aspect</b> :  max 200 keywords explainetion of project
 - <b>Brief Introduction</b> : Introuduction abour project.
 - <b>Leterature review</b> : research paper fiding and old implimentation of project.
@@ -18,6 +18,62 @@
 - <b>Reference</b> : mention all reference used in whole project.
 
 
-#### workflow diagram link - https://app.diagrams.net/?src=about#Hmohityede%2FCollage-Project%2Fmain%2FDocumentation%2FworkFlow%20Diagram.drawio
+## Basic Documentation
+### Features:
+-	Farmer can add there product in website to sell directly to consumer.
+-	Consumer can buy product directly form nearby farmer
+-	Farmer and consumer can see there details
+-	Can serch product(optional)
+-	User transection details
+### Goals:
+- Reduce the middleman of supply chain
+- Provide good profit to farmers
+- Provide best qulity of product to consumer
+- Less transportation use
 
-#### sitemap diagram link - https://app.diagrams.net/?src=about#Hmohityede%2FCollage-Project%2Fmain%2FDocumentation%2FUntitled%20Diagram.drawio
+### Schema:
+- Farmer
+    - Full name
+    - Location
+    - Phone
+    - Email
+    - Products
+    - image
+    - Discription
+- Consumer
+    - Full name
+    - Location
+    - Phone
+    - Email
+    - Oraganization
+    - image
+- Product
+    - Name
+    - Type
+    - Price
+    - Create date
+    - Expiry date
+    - Owner
+    - Quantity
+    - Images
+    - Status
+    - Last update
+
+### Visual representation
+Sitemap: https://whimsical.com/sitemap-6hYvXFWpT4tcjMfWrbNqKH
+
+Workflow diagram: https://whimsical.com/workflow-diagram-EX3JiHS2FRwoTCW13Jvhu3@2Ux7TurymNDZhfDSuqHy
+
+Wireframe: https://whimsical.com/window-page-Aa9HiUfDcH7MxMrBhd9Bxp
+
+### Technical Requirement
+#### Hardware:
+- OS: Window 10
+- RAM: min 4gb
+- Storage: min 500gb
+#### Software:
+- Environment: NodeJS
+- Database: MongoDB
+- Web browser: Chrome or Mozilla
+- Text Editor: VS Code
+- VCS: Git and Github
