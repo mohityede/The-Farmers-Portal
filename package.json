@@ -1,0 +1,24 @@
+{
+  "name": "collage-project",
+  "version": "1.0.0",
+  "description": "web app to sell farm products direct to consumer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohityede/Collage-Project.git"
+  },
+  "author": "AGP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohityede/Collage-Project/issues"
+  },
+  "homepage": "https://github.com/mohityede/Collage-Project#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
