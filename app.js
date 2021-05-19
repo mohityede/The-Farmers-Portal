@@ -16,15 +16,15 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/login',(req,res)=>{
-    res.render('account/login');
+    res.render('auth/login');
 });
 
 app.get('/signUp',(req,res)=>{
-    res.render('account/signUp');
+    res.render('auth/signUp');
 })
 
 app.get('/forgotPassword',(req,res)=>{
-    res.render('account/forgotPassword');
+    res.render('auth/forgotPassword');
 })
 
 const port = 7000;
