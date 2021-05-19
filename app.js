@@ -16,7 +16,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/login',(req,res)=>{
-    res.render('accout/login');
+    res.render('account/login');
 })
 
 const port = 7000;
