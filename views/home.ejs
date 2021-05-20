@@ -10,8 +10,15 @@
 
 <body>
     <h1>This is home page</h1>
-    <h2>this is h2</h2>
-    <a href="/login">login</a>
+    <% if(currUser){ %>
+
+    <h2>this <%= currUser.name %>
+    </h2>
+    <a href="/logOut">Logout</a>
+    <% } else { %>
+        <a href="/login">Login</a>
+    <% } %>
+
 </body>
 
 </html>
