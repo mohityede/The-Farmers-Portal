@@ -6,15 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
 </head>
 
 <body>
+    <%- include('partial/massages') -%>
     <h1>This is home page</h1>
     <% if(currUser){ %>
 
     <h2>this <%= currUser.name %>
     </h2>
     <a href="/logOut">Logout</a>
+    <br>
+    <a href="/password/change">change Password</a>
     <% } else { %>
         <a href="/login">Login</a>
     <% } %>
