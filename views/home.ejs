@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,6 +23,202 @@
         <a href="/login">Login</a>
     <% } %>
 
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/account/logo.jpeg" type="image/x-icon">
+  <!-- Box icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="css/home/home.css" />
+  <title>The farmer Portal</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="home" class="header">
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="navigation container">
+        <div class="logo">
+            <img src="img/account/logo.jpeg">
+          <h1>Farmer</h1>
+        </div>
+
+        <div class="menu">
+          <div class="top-nav">
+            <div class="logo">
+                <img src="img/account/logo.jpeg">
+              <h1>Farmer</h1>
+            </div>
+            <div class="close">
+              <i class="bx bx-x"></i>
+            </div>
+          </div>
+
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="#home" class="nav-link scroll-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="product.html" class="nav-link">Products</a>
+            </li>
+            <li class="nav-item">
+              <a href="#about" class="nav-link scroll-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="#thought" class="nav-link scroll-link">Thoughts</a>
+            </li>
+            <li class="nav-item">
+                <% if(currUser){ %>
+                    <a href="/user" class="nav-link scroll-link"><%= currUser.name %></a>
+                    <% } else { %>
+                        <a href="/login" class="nav-link scroll-link">Login</a>
+                    <% } %>
+
+            </li>
+            <li class="nav-item">
+              <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
+            </li>
+          </ul>
+        </div>
+
+        <a href="cart.html" class="cart-icon">
+          <i class="bx bx-shopping-bag"></i>
+        </a>
+
+        <div class="hamburger">
+          <i class="bx bx-menu"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <img src="img/home/farmerHero.png" alt="" class="hero-img" />
+
+    <div class="hero-content">
+      <h2><span class="discount"></span> THE</h2>
+      <h1>
+        <span>FARMER</span>
+        <span>PORTAL</span>
+      </h1>
+      <a class="btn" href="#">explore now</a>
+    </div>
+  </header>
+
+    <!--Latest -->
+
+    <section class="section featured">
+      <div class="title">
+        <h1>Latest Products</h1>
+      </div>
+
+
+      <div class="product-center container">
+        <% for(let i=0;i<8;i++){ %>
+            <div class="product">
+                <div class="product-header">
+                  <img src="img/account/logo.jpeg">
+
+                  <ul class="icons">
+                    <span><i class="bx bx-heart"></i></span>
+                    <span><i class="bx bx-shopping-bag"></i></span>
+                    <span><i class="bx bx-search"></i></span>
+                  </ul>
+                </div>
+                <div class="product-footer">
+                  <a href="#"><h3>Boy’s T-Shirt</h3></a>
+                  <div class="rating">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bx-star"></i>
+                  </div>
+                  <h4 class="price">$50</h4>
+                </div>
+              </div>
+            <% } %>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="thought" class="section">
+      <div class="testimonial-center container">
+        <div class="testimonial">
+          <span>&ldquo;</span>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
+            fugiat labore. Veritatis et omnis consequatur.
+          </p>
+          <div class="rating">
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bx-star"></i>
+          </div>
+          <div class="img-cover">
+            <img src="img/account/logo.jpegg" alt="" />
+          </div>
+          <h4>Will Smith</h4>
+        </div>
+        <div class="testimonial">
+          <span>&ldquo;</span>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
+            fugiat labore. Veritatis et omnis consequatur.
+          </p>
+          <div class="rating">
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bx-star"></i>
+          </div>
+          <div class="img-cover">
+            <img src="img/account/logo.jpegg" alt="" />
+          </div>
+          <h4>Will Smith</h4>
+        </div>
+        <div class="testimonial">
+          <span>&ldquo;</span>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
+            fugiat labore. Veritatis et omnis consequatur.
+          </p>
+          <div class="rating">
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bxs-star"></i>
+            <i class="bx bx-star"></i>
+          </div>
+          <div class="img-cover">
+            <img src="img/account/logo.jpegg" alt="" />
+          </div>
+          <h4>Will Smith</h4>
+        </div>
+      </div>
+    </section>
+
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <!-- Custom Script -->
+  <script src="js/home/home.js"></script>
 </body>
 
 </html>
