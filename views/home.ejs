@@ -41,7 +41,7 @@
 
   <!-- Custom StyleSheet -->
   <link rel="stylesheet" href="css/home/home.css" />
-  <title>The farmer Portal</title>
+  <title>The Farmer Portal</title>
 </head>
 
 <body>
@@ -51,15 +51,13 @@
     <nav class="nav">
       <div class="navigation container">
         <div class="logo">
-            <img src="img/account/logo.jpeg">
-          <h1>Farmer</h1>
+          <h1>THE FARMERS PORTAL</h1>
         </div>
 
         <div class="menu">
           <div class="top-nav">
             <div class="logo">
-                <img src="img/account/logo.jpeg">
-              <h1>Farmer</h1>
+              <h1>THE FARMERS PORTAL</h1>
             </div>
             <div class="close">
               <i class="bx bx-x"></i>
@@ -71,30 +69,42 @@
               <a href="#home" class="nav-link scroll-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="product.html" class="nav-link">Products</a>
+              <a href="#featured" class="nav-link">Products</a>
+            </li>
+            <li class="nav-item">
+              <a href="#famers" class="nav-link">Farmers</a>
             </li>
             <li class="nav-item">
               <a href="#about" class="nav-link scroll-link">About</a>
             </li>
-            <li class="nav-item">
-              <a href="#thought" class="nav-link scroll-link">Thoughts</a>
-            </li>
-            <li class="nav-item">
-                <% if(currUser){ %>
-                    <a href="/user" class="nav-link scroll-link"><%= currUser.name %></a>
-                    <% } else { %>
-                        <a href="/login" class="nav-link scroll-link">Login</a>
-                    <% } %>
+            <% if(currUser){ %>
+              <li class="nav-item">
+                <a href="/user" class="nav-link scroll-link">
+                  <%= currUser.name %>
+                </a>
+                <a href="/logOut" class="nav-link">
+                  Log out
+                </a>
+              <li class="nav-item">
+                <a href="cart.html" class="nav-link icon"><i class="fas fa-user"></i></a>
+              </li>
+              </li>
 
-            </li>
-            <li class="nav-item">
-              <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
-            </li>
+              <% } else { %>
+                <li class="nav-item">
+                  <a href="/login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/signUp" class="nav-link">Sign Up</a>
+                </li>
+                <% } %>
+
+
           </ul>
         </div>
 
         <a href="cart.html" class="cart-icon">
-          <i class="bx bx-shopping-bag"></i>
+          <i class="fas fa-user"></i>
         </a>
 
         <div class="hamburger">
@@ -107,112 +117,104 @@
     <img src="img/home/farmerHero.png" alt="" class="hero-img" />
 
     <div class="hero-content">
-      <h2><span class="discount"></span> THE</h2>
+      <h2><span class="the"></span> THE</h2>
       <h1>
-        <span>FARMER</span>
+        <span>FARMERS</span>
         <span>PORTAL</span>
       </h1>
-      <a class="btn" href="#">explore now</a>
+      <a class="btn" href="#featured">explore now</a>
     </div>
   </header>
 
-    <!--Latest -->
+  <!--Latest -->
 
-    <section class="section featured">
-      <div class="title">
-        <h1>Latest Products</h1>
+  <section id="featured" class="section featured">
+    <div class="title">
+      <h1>Latest Products</h1>
+    </div>
+
+
+    <div class="product-center container">
+      <% for(let i=0;i<8;i++){ %>
+        <div class="product">
+          <div class="product-header">
+            <img src="img/account/logo.jpeg">
+
+            <ul class="icons">
+              <span><i class="bx bx-heart"></i></span>
+            </ul>
+          </div>
+          <div class="product-footer">
+            <a href="#">
+              <h3>Product</h3>
+            </a>
+            <h4 class="price">50</h4>
+          </div>
+        </div>
+        <% } %>
+
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="thought" class="section">
+    <div class="testimonial-center container">
+      <div class="testimonial">
+        <span>&ldquo;</span>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
+          fugiat labore. Veritatis et omnis consequatur.
+        </p>
+        <div class="rating">
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bx-star"></i>
+        </div>
+        <div class="img-cover">
+          <img src="img/account/logo.jpegg" alt="" />
+        </div>
+        <h4>user name</h4>
       </div>
-
-
-      <div class="product-center container">
-        <% for(let i=0;i<8;i++){ %>
-            <div class="product">
-                <div class="product-header">
-                  <img src="img/account/logo.jpeg">
-
-                  <ul class="icons">
-                    <span><i class="bx bx-heart"></i></span>
-                    <span><i class="bx bx-shopping-bag"></i></span>
-                    <span><i class="bx bx-search"></i></span>
-                  </ul>
-                </div>
-                <div class="product-footer">
-                  <a href="#"><h3>Boy’s T-Shirt</h3></a>
-                  <div class="rating">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bx-star"></i>
-                  </div>
-                  <h4 class="price">$50</h4>
-                </div>
-              </div>
-            <% } %>
-
+      <div class="testimonial">
+        <span>&ldquo;</span>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
+          fugiat labore. Veritatis et omnis consequatur.
+        </p>
+        <div class="rating">
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bx-star"></i>
         </div>
+        <div class="img-cover">
+          <img src="img/account/logo.jpegg" alt="" />
+        </div>
+        <h4>user name</h4>
       </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="thought" class="section">
-      <div class="testimonial-center container">
-        <div class="testimonial">
-          <span>&ldquo;</span>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
-            fugiat labore. Veritatis et omnis consequatur.
-          </p>
-          <div class="rating">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bx-star"></i>
-          </div>
-          <div class="img-cover">
-            <img src="img/account/logo.jpegg" alt="" />
-          </div>
-          <h4>Will Smith</h4>
+      <div class="testimonial">
+        <span>&ldquo;</span>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
+          fugiat labore. Veritatis et omnis consequatur.
+        </p>
+        <div class="rating">
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bxs-star"></i>
+          <i class="bx bx-star"></i>
         </div>
-        <div class="testimonial">
-          <span>&ldquo;</span>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
-            fugiat labore. Veritatis et omnis consequatur.
-          </p>
-          <div class="rating">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bx-star"></i>
-          </div>
-          <div class="img-cover">
-            <img src="img/account/logo.jpegg" alt="" />
-          </div>
-          <h4>Will Smith</h4>
+        <div class="img-cover">
+          <img src="img/account/logo.jpegg" alt="" />
         </div>
-        <div class="testimonial">
-          <span>&ldquo;</span>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
-            fugiat labore. Veritatis et omnis consequatur.
-          </p>
-          <div class="rating">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bx-star"></i>
-          </div>
-          <div class="img-cover">
-            <img src="img/account/logo.jpegg" alt="" />
-          </div>
-          <h4>Will Smith</h4>
-        </div>
+        <h4>user name</h4>
       </div>
-    </section>
+    </div>
+  </section>
 
 
   <!-- GSAP -->

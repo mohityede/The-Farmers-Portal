@@ -30,7 +30,7 @@ router.get('/forgot',(req,res)=>{
     res.render('auth/forgot');
 });
 
-router.get('/', isAuthenticedUser, (req,res)=>{
+router.get('/', (req,res)=>{
     res.render('home');
 });
 
