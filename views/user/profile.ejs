@@ -1,0 +1,127 @@
+<%- include('../partial/header') -%>
+
+    <link rel="stylesheet" href="css/user/profile.css">
+    <div class="container">
+        <div class="main-body">
+
+            <!-- /Breadcrumb -->
+
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                    class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h2>
+                                        <%= currUser.name %>
+                                    </h2>
+
+                                    <button class="btn btn-primary">like</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Full Name</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.name %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.email %>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Mobile</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.phone %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Local Address</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.location %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Districts</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.district %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">State</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.state %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">PIN</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.pin %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Oraganization</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.org %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a class="btn btn-info" target="__blank" href="profile/edit">Edit</a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    <a class="btn btn-danger mohit" href="/logOut">Log Out</a>
+                                </div>
+                            </div>
+
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('../partial/footer') -%>

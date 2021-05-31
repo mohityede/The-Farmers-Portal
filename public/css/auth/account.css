@@ -5,6 +5,7 @@ html {
     padding: 0;
     height: 100%;
     background: #f0f4f7 !important;
+    font-family: "Poppins", sans-serif !important;
 }
 .user_card {
     width: 350px;
