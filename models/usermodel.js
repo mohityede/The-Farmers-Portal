@@ -9,6 +9,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         select: false
     },
+    role: String,
+    location: {
+        local: String,
+        district: String,
+        state: String,
+        pin: Number
+    },
+    org:String,
     resetPasswordToken: String,
     resetPasswordExpires: Date
 });

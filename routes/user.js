@@ -21,4 +21,31 @@ router.get('/profile/edit',isAuthenticedUser,(req,res)=>{
     res.render('user/edit');
 });
 
+// Post requests
+router.post('/profile/edit/:id',isAuthenticedUser,(req,res)=>{
+    let sQuary = {_id:req.params.id};
+
+    User.updateOne(sQuary,{
+        $set:{
+            name: req.body.name,
+            phone: req.body.phone,
+            role: req.body.role,
+            location: {
+                local: req.body.local,
+                district: req.body.district,
+                state: req.body.state,
+                pin: req.body.pin
+            },
+            org:req.body.org,
+        }
+    })
+    .then(user => {
+        req.flash('sucess_msg','profile ediated sucessfully.');
+        res.redirect('/profile');
+    })
+    .catch(err => {
+        console.log("erron in edit..");
+    })
+});
+
 module.exports = router;

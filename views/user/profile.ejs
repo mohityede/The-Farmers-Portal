@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                <img src="https://thumbs.dreamstime.com/z/indian-farmer-cartoon-character-vector-ceremony-cleaned-clipart-consume-dance-dancer-day-dip-dress-each-early-eventually-excellent-164417070.jpg" alt="Admin"
                                     class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h2>
@@ -62,7 +62,7 @@
                                     <p class="mb-0">Local Address</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <%= currUser.location %>
+                                    <%= currUser.location.local %>
                                 </div>
                             </div>
                             <hr>
@@ -71,7 +71,7 @@
                                     <p class="mb-0">Districts</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <%= currUser.district %>
+                                    <%= currUser.location.district %>
                                 </div>
                             </div>
                             <hr>
@@ -80,7 +80,7 @@
                                     <p class="mb-0">State</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <%= currUser.state %>
+                                    <%= currUser.location.state %>
                                 </div>
                             </div>
                             <hr>
@@ -89,7 +89,7 @@
                                     <p class="mb-0">PIN</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <%= currUser.pin %>
+                                    <%= currUser.location.pin %>
                                 </div>
                             </div>
                             <hr>

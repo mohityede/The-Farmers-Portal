@@ -10,8 +10,8 @@
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
 
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                    class="rounded-circle" width="150">
+                                <img src="https://thumbs.dreamstime.com/z/indian-farmer-cartoon-character-vector-ceremony-cleaned-clipart-consume-dance-dancer-day-dip-dress-each-early-eventually-excellent-164417070.jpg"
+                                    alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
 
                                     <input type="file" name="userImage">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card mb-3">
-                        <form class="card-body">
+                        <form action="/profile/edit/<%= currUser._id %>" method="POST" class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Full Name</p>
@@ -39,87 +39,128 @@
                                     <p class="mb-0">Role</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-
-
                                     <select name="role">
                                         <option>Consumer</option>
                                         <option selected>Farmer</option>
-
                                     </select>
-
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Phone</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="tel" name="phone" placeholder="<%= currUser.phone %>" name="phone"
+                                        pattern="[0-9]{10}">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class=" row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Local Address</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="local" placeholder="<%= currUser.local %>">
                                 </div>
                             </div>
                             <hr>
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Mobile</p>
+                                    <p class="mb-0">State</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="tel" name="phone" placeholder="<%= currUser.phone %>" name="phone"
-                                        placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}>
+                                    <select name="state" id="inputState">
+                                        <option value="SelectState">Select State</option>
+                                        <option value="Andra Pradesh">Andra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Madya Pradesh">Madya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Orissa">Orissa</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttaranchal">Uttaranchal</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                        <option disabled style="background-color:#aaa; color:#fff">UNION Territories
+                                        </option>
+                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                        <option value="Chandigarh">Chandigarh</option>
+                                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                        <option value="Daman and Diu">Daman and Diu</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Lakshadeep">Lakshadeep</option>
+                                        <option value="Pondicherry">Pondicherry</option>
+                                    </select>
+                                </div>
 
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Districts</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <select name="district" id="inputDistrict">
+                                        <option value="">-- select one -- </option>
+                                    </select>
                                 </div>
                             </div>
                             <hr>
-                            <div class=" row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Local Address</p>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="local" placeholder="<%= currUser.location %>">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Districts</p>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="local" placeholder="<%= currUser.location %>">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">State</p>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="local" placeholder="<%= currUser.location %>">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">PIN</p>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="number" name="local" placeholder="<%= currUser.location %>">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Oraganization</p>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="local" placeholder="<%= currUser.location %>">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <button type="submit">Save</button>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-12">
 
-                                        <a class="btn btn-danger mohit" href="/profile">cancel</a>
-                                    </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">PIN</p>
                                 </div>
-                                <hr>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" name="pin" placeholder="<%= currUser.pin %>">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Oraganization</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="org" placeholder="<%= currUser.org %>">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button type="submit">Save</button>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    <a class="btn btn-danger mohit" href="/profile">cancel</a>
+                                </div>
+                            </div>
+                            <hr>
                         </form>
                     </div>
                 </div>
@@ -127,5 +168,10 @@
 
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="/js/user/stateDis.js"></script>
 
     <%- include('../partial/footer') -%>
