@@ -30,7 +30,7 @@
                                     <p class="mb-0">Full Name</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="name" placeholder="<%= currUser.name %>">
+                                    <input type="text" name="name" value="<%= currUser.name %>">
                                 </div>
                             </div>
                             <hr>
@@ -40,8 +40,9 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <select name="role">
+                                        <option value="<%= currUser.role%>"><%= currUser.role%></option>
                                         <option>Consumer</option>
-                                        <option selected>Farmer</option>
+                                        <option>Farmer</option>
                                     </select>
                                 </div>
                             </div>
@@ -51,7 +52,7 @@
                                     <p class="mb-0">Phone</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="tel" name="phone" placeholder="<%= currUser.phone %>" name="phone"
+                                    <input type="tel" name="phone" value="<%= currUser.phone %>" name="phone"
                                         pattern="[0-9]{10}">
                                 </div>
                             </div>
@@ -61,7 +62,7 @@
                                     <p class="mb-0">Local Address</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="local" placeholder="<%= currUser.local %>">
+                                    <input type="text" name="local" value="<%= currUser.local %>">
                                 </div>
                             </div>
                             <hr>
@@ -72,6 +73,7 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <select name="state" id="inputState">
+                                        <option value="<%= currUser.state %>" selected><%= currUser.state %></option>
                                         <option value="SelectState">Select State</option>
                                         <option value="Andra Pradesh">Andra Pradesh</option>
                                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>

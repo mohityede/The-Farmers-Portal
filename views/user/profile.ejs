@@ -17,8 +17,19 @@
                                     <h2>
                                         <%= currUser.name %>
                                     </h2>
+                                    <% if(currUser.role=="Farmer"){ %>
+                                        <a href="/products/myProducts">
+                                            <button class="btn btn-primary">My Products</button>
+                                        </a><hr>
+                                        <a href="/products/create">
+                                            <button class="btn btn-primary">Create Product</button>
+                                        </a>
+                                        <% }else{ %>
+                                            <a href="/products/cart">
+                                                <button class="btn btn-primary">My cart</button>
+                                            </a>
+                                            <% } %>
 
-                                    <button class="btn btn-primary">like</button>
 
                                 </div>
                             </div>
@@ -44,6 +55,15 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <%= currUser.email %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Role</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.role %>
                                 </div>
                             </div>
                             <hr>

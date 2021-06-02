@@ -17,6 +17,8 @@ dotenv.config({path:'./config/config.env'});
 const authRoute = require('./routes/auth');
 // require user route
 const userRoute = require('./routes/user');
+// require product route
+const productRoute = require('./routes/products');
 
 // require userModel
 const User = require('./models/usermodel');
@@ -60,6 +62,7 @@ app.use(express.urlencoded());
 app.use(express.static('public'));
 app.use(authRoute);
 app.use(userRoute);
+app.use(productRoute);
 
 const port = process.env.PORT;
 app.listen(port,()=>{

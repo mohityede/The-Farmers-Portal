@@ -1,0 +1,37 @@
+<%- include('../partial/header') -%>
+<link rel="stylesheet" href="/css/products/all.css">
+<!-- <link rel="stylesheet" href="/css/home/home.css"> -->
+
+
+
+    <!-- All Products -->
+    <section id="featured" class="section featured">
+        <div class="title">
+          <h1>All Products</h1>
+        </div>
+
+        <div class="product-center container">
+          <% for(let i=0;i<8;i++){ %>
+
+            <div class="product">
+              <div class="product-header">
+                <img src="/img/account/logo.jpeg">
+
+                <ul class="icons">
+                  <span><i class="bx bx-heart"></i></span>
+                </ul>
+              </div>
+              <div class="product-footer">
+                <a href="#">
+                  <h3>Product</h3>
+                </a>
+                <h4 class="price">50</h4>
+              </div>
+            </div>
+
+            <% } %>
+
+        </div>
+      </section>
+
+    <%- include('../partial/footer') -%>
