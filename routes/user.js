@@ -13,12 +13,36 @@ function isAuthenticedUser(req,res,next){
     res.redirect('/login');
 }
 
-router.get('/profile',isAuthenticedUser, (req,res)=>{
+router.get('/profile',isAuthenticedUser,(req,res)=>{
     res.render('user/profile');
+})
+
+router.get('/farmer/profile/:id', (req,res)=>{
+    let searchQuary = { _id: req.params.id };
+    User.findOne(searchQuary)
+        .then(user => {
+            res.render('user/farmerProfile', { cUser : user });
+        })
+        .catch(err => {
+            console.log("error in showing profile..");
+        })
 });
 
 router.get('/profile/edit',isAuthenticedUser,(req,res)=>{
     res.render('user/edit');
+});
+
+router.get('/farmers',(req,res)=>{
+    User.find({},(err, user)=>{
+        console.log(user[0]);
+        if(err){
+            console.log("error during fatching data");
+            return;
+        }
+        return res.render('user/allFarmers',{
+            farmer: user
+        });
+    });
 });
 
 // Post requests

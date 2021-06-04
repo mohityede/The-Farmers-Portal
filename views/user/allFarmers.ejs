@@ -1,0 +1,33 @@
+<%- include('../partial/header') -%>
+<link rel="stylesheet" href="/css/products/all.css">
+<!-- <link rel="stylesheet" href="/css/home/home.css"> -->
+
+
+
+    <!-- All Products -->
+    <section id="featured" class="section featured">
+        <div class="title">
+          <h1>All Farmers</h1>
+        </div>
+
+        <div class="product-center container">
+          <% for(let i=0;i<farmer.length;i++){ %>
+
+            <div class="product">
+              <div class="product-header">
+                <img src="https://thumbs.dreamstime.com/z/indian-farmer-cartoon-character-vector-ceremony-cleaned-clipart-consume-dance-dancer-day-dip-dress-each-early-eventually-excellent-164417070.jpg">
+
+              </div>
+              <div class="product-footer">
+                <a href="/farmer/profile/<%= farmer[i].id %>">
+                  <h3><%= farmer[0].name %></h3>
+                </a>
+              </div>
+            </div>
+
+            <% } %>
+
+        </div>
+      </section>
+
+    <%- include('../partial/footer') -%>

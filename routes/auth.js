@@ -61,6 +61,9 @@ router.get('/reset/:token', (req, res)=> {
         });
 });
 
+router.get('/about',(req,res)=>{
+    res.render('other/about');
+});
 
 //POST routes
 router.post('/login', passport.authenticate('local',{
