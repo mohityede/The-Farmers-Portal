@@ -7,32 +7,18 @@
     <div class="details container-md">
       <div class="left">
         <div class="w3-content w3-display-container">
-
-
+          <% if(pro.imgUrl.length==0){ %>
             <div class="w3-display-container mySlides">
               <img src="/img/account/logo.jpeg" style="width:100%">
-
             </div>
+          <% }else{ %>
+            <% for(let i=0;i<pro.imgUrl.length;i++){ %>
+              <div class="w3-display-container mySlides">
+                <img src="<%= pro.imgUrl[i] %>" style="width:100%">
+              </div>
+            <% } %>
+          <% } %>
 
-            <div class="w3-display-container mySlides">
-              <img src="/img/home/farmerHero.png" style="width:100%">
-
-            </div>
-
-            <div class="w3-display-container mySlides">
-              <img src="/img/home/farmerHero2.png" style="width:100%">
-
-            </div>
-
-            <div class="w3-display-container mySlides">
-              <img src="/img/home/blankImg.png" style="width:100%">
-
-            </div>
-
-            <div class="w3-display-container mySlides">
-              <img src="/img/account/logo.jpeg" style="width:100%">
-
-            </div>
 
             <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
             <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
@@ -42,10 +28,10 @@
       </div>
       <div class="right">
         <span>Home/products</span>
-        <h1>Basmati Rice</h1>
-        <div class="price">Price: ₹50/kg</div>
+        <h1><%= pro.name %></h1>
+        <div class="price">Price: ₹ <%= pro.price %> /kg</div>
         <br>
-        <div class="price">Available: 500kg</div>
+        <div class="price">Available: <%= pro.available %>kg</div>
 
 
         <form class="form">
@@ -53,11 +39,10 @@
           <a href="cart.html" class="addCart">Add to cart</a>
         </form>
         <h3>Product Detail</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero minima delectus nulla voluptates nesciunt
-          quidem laudantium, quisquam voluptas facilis dicta in explicabo, laboriosam ipsam suscipit!</p>
+        <p><%= pro.details %></p>
 
-          <span><b>Create Date:</b>  23/38/2921</span> <br>
-          <span><b>Producer:</b> <a href="">farmer name</a> </span><br>
+          <span><b>Create Date:</b>  <%= pro.createDate %></span> <br>
+          <span><b>Producer:</b> <a href="/farmer/profile/<%= produc._id %>"><%= produc.name %></a> </span><br>
           <span><b>status:</b>  Available</span>
       </div>
     </div>

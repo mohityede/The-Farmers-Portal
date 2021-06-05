@@ -10,6 +10,10 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
+// for file handling
+const multer = require('multer');
+const methodOverride = require('method-override');
+const fs = require('fs');
 
 dotenv.config({path:'./config/config.env'});
 
@@ -22,6 +26,8 @@ const productRoute = require('./routes/products');
 
 // require userModel
 const User = require('./models/usermodel');
+// require product Model
+const Product = require('./models/products');
 
 mongoose.connect('mongodb://localhost:27017/farmerport', {
     useNewUrlParser: true,

@@ -11,24 +11,29 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="https://thumbs.dreamstime.com/z/indian-farmer-cartoon-character-vector-ceremony-cleaned-clipart-consume-dance-dancer-day-dip-dress-each-early-eventually-excellent-164417070.jpg" alt="Admin"
-                                    class="rounded-circle" width="150">
+                                <img src="https://thumbs.dreamstime.com/z/indian-farmer-cartoon-character-vector-ceremony-cleaned-clipart-consume-dance-dancer-day-dip-dress-each-early-eventually-excellent-164417070.jpg"
+                                    alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h2>
                                         <%= currUser.name %>
                                     </h2>
-                                    <% if(currUser.role=="Farmer"){ %>
-                                        <a href="/products/myProducts">
-                                            <button class="btn btn-primary">My Products</button>
-                                        </a><hr>
-                                        <a href="/products/create">
-                                            <button class="btn btn-primary">Create Product</button>
-                                        </a>
-                                        <% }else{ %>
-                                            <a href="/products/cart">
-                                                <button class="btn btn-primary">My cart</button>
+
+                                        <%- include('../partial/massages') -%>
+
+                                        <% if(currUser.role=="Farmer" ){ %>
+                                            <a href="/products/myProducts/<%= currUser.id %>">
+                                                <button class="btn btn-primary">My Products</button>
                                             </a>
-                                            <% } %>
+                                            <hr>
+                                            <a href="/products/create">
+                                                <button class="btn btn-primary">Create Product</button>
+                                            </a>
+
+                                            <% }else{ %>
+                                                <a href="/products/cart">
+                                                    <button class="btn btn-primary">My cart</button>
+                                                </a>
+                                                <% } %>
 
 
                                 </div>

@@ -5,7 +5,7 @@
 
     <!-- You only need this form and the form-basic.css -->
 
-    <form class="form-basic" method="post" action="#">
+    <form class="form-basic" method="post" enctype="multipart/form-data" action="/products/create">
 
         <div class="form-title-row">
             <h1>Create Product</h1>
@@ -21,7 +21,7 @@
         <div class="form-row">
             <label>
                 <span>Availabel Quntity:</span>
-                <input type="number" name="availabel">
+                <input type="number" name="available">
             </label>
         </div>
 
@@ -41,14 +41,14 @@
         <div class="form-row">
             <label>
                 <span>Upload Images</span>
-                <input type="file" id="files" name="files" multiple>
+                <input type="file" id="files" placeholder="Choose Images" name="multiFile" multiple>
             </label>
         </div>
+        <input type="hidden" name="userId" value="<%= currUser._id %>">
 
         <div class="form-row">
             <button type="submit">Add Product</button>
         </div>
-
 
     </form>
 

@@ -14,9 +14,9 @@
 .error-msg {
     background-color: rgb(233, 173, 173);
     color: rgb(128, 0, 0);
-    height: 40px;
+    height: 100%;
     border: 1px solid rgb(197, 154, 146);
-    border-radius: 10px;
+    border-radius: 0.25rem !important;
     display: flex;
     justify-content: center;
     align-items: center;
