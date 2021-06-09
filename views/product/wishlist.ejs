@@ -1,0 +1,41 @@
+<%- include('../partial/header') -%>
+
+<link rel="stylesheet" href="/css/products/wishlist.css">
+
+  <!-- Cart Items -->
+
+    <h1 style="text-align: center; font-size: 40px;">My Wishlist</h1>
+    <div id="UserId" style="display:none"><%= currUser._id %></div>
+
+  <div class="container-md cart">
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      <div id="temp"></div>
+      <% for(let i=0;i<2;i++){ %>
+        <tr>
+            <td>
+              <div class="cart-info">
+                <img src="/img/account/logo.jpeg" alt="produt Img">
+                <div>
+                  <p>2</p>
+
+                  <br />
+                  <a href="/product/wishlist/remove">remove</a>
+                </div>
+              </div>
+            </td>
+            <td>available quan</td>
+            <td>₹ 50.00</td>
+          </tr>
+      <% } %>
+
+    </table>
+
+
+  </div>
+
+  <%- include('../partial/footer') -%>
