@@ -16,6 +16,12 @@ const userSchema = new mongoose.Schema({
         state: String,
         pin: Number
     },
+    wishlist: [{
+        proId: String,
+        proName: String,
+        proAvailable: Number,
+        proPrice: Number
+    }],
     org:String,
     wishlist: [String],
     resetPasswordToken: String,
