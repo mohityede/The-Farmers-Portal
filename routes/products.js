@@ -10,6 +10,7 @@ const fs = require('fs');
 const User = require('../models/usermodel');
 // require product Model
 const Product = require('../models/products');
+const { findById } = require('../models/usermodel');
 
 // function to check user is authonticated or not
 function isAuthenticedUser(req,res,next){
@@ -78,7 +79,7 @@ router.get('/products/all',(req,res)=>{
         return res.render('product/allProducts',{
             pro: product
         });
-    });
+    }).sort({createDate:-1});
 })
 
 router.get('/products/myProducts/:id',(req,res)=>{
@@ -92,6 +93,77 @@ router.get('/products/myProducts/:id',(req,res)=>{
             pro: product
         });
     });
+});
+
+router.get('/product/delete/', (req,res)=>{
+    let proId = req.query.id;
+
+    Product.findByIdAndDelete(proId, (err) => {
+        if(err){
+            console.log("error in deleting Product");
+            return;
+        }
+        req.flash('sucess_msg','Product deleted sucessfully.');
+        res.redirect('/profile'); // back means same page..(/)
+    });
+});
+
+router.get('/product/edit/:id',isAuthenticedUser,(req,res)=>{
+    let searchQuery = {_id:req.params.id};
+    Product.findOne(searchQuery)
+    .then(pro=>{
+        return res.render('product/editProduct',{cPro:pro});
+    })
+    .catch(err=>{
+        return console.log("error in redering edit page");
+    })
+})
+
+router.get('/products/wishlistAll',(req,res)=>{
+    res.render('product/wishlist');
+})
+
+router.get('/products/wishlist/:id', (req,res)=>{
+    let searchQuery = {_id:req.params.id};
+
+
+    User.findOne(searchQuery).exec((err,user)=>{
+        if(err){
+            return console.log("error in user find")
+        }
+        let proArray= [];
+        let dataArr = user.wishlist;
+        dataArr.forEach(proStr=>{
+            console.log("inside forecah")
+            Product.findOne({_id:proStr},(err,pro)=>{
+                if(err=>{
+                    return console.log("error in find product");
+                })
+                console.log("inside find")
+                console.log(pro);
+                proArray.push(pro);
+            })
+        })
+
+        console.log("outside forEch"+proArray);
+        console.log("over")
+        res.send(proArray);
+})
+})
+
+router.get('/product/wishlist/add/',isAuthenticedUser, (req,res)=>{
+    let user= req.query.userId;
+    let product= req.query.proId;
+    User.findOneAndUpdate({_id:user},{
+        $push:{wishlist:product}
+    })
+    .then(user=>{
+        req.flash('success_msg','Product added to wishlist sucessfully.');
+        res.redirect('/profile'); // back means same page..(/)
+    })
+    .catch(err=>{
+        return console.log("error in adding whishlist");
+    })
 })
 
 // Post requests
@@ -114,11 +186,30 @@ router.post('/products/create',isAuthenticedUser, upload.array('multiFile'),(req
     }
     Product.create(addPro)
     .then(product => {
-        req.flash('sucess_msg','Product added sucessfully.');
+        req.flash('success_msg','Product added sucessfully.');
         res.redirect('/profile');
     })
     .catch(err => {
         return console.log("error in create product");
+    })
+});
+
+router.post('/products/edit/:id',isAuthenticedUser,(req,res)=>{
+    let searchQuery = {_id:req.params.id};
+    Product.findOneAndUpdate(searchQuery,{
+        $set: {
+            name: req.body.name,
+            available: req.body.available,
+            price: req.body.price,
+            details: req.body.details
+        }
+    })
+    .then(product => {
+        req.flash('success_msg','Product edited sucessfully.');
+        res.redirect('/profile');
+    })
+    .catch(err => {
+        console.log("error in update product..");
     })
 });
 

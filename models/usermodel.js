@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
         pin: Number
     },
     org:String,
+    wishlist: [String],
     resetPasswordToken: String,
     resetPasswordExpires: Date
 });

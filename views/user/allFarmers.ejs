@@ -12,18 +12,22 @@
 
         <div class="product-center container">
           <% for(let i=0;i<farmer.length;i++){ %>
+            <% if(farmer[i].role){ %>
+              <% if(farmer[i].role=="Farmer"){ %>
+                <div class="product">
+                  <div class="product-header">
+                    <img src="https://thumbs.dreamstime.com/z/indian-farmer-cartoon-character-vector-ceremony-cleaned-clipart-consume-dance-dancer-day-dip-dress-each-early-eventually-excellent-164417070.jpg">
 
-            <div class="product">
-              <div class="product-header">
-                <img src="https://thumbs.dreamstime.com/z/indian-farmer-cartoon-character-vector-ceremony-cleaned-clipart-consume-dance-dancer-day-dip-dress-each-early-eventually-excellent-164417070.jpg">
+                  </div>
+                  <div class="product-footer">
+                    <a href="/farmer/profile/<%= farmer[i].id %>">
+                      <h3><%= farmer[i].name %></h3>
+                    </a>
+                  </div>
+                </div>
+              <% } %>
+            <% } %>
 
-              </div>
-              <div class="product-footer">
-                <a href="/farmer/profile/<%= farmer[i].id %>">
-                  <h3><%= farmer[0].name %></h3>
-                </a>
-              </div>
-            </div>
 
             <% } %>
 

@@ -33,17 +33,31 @@
         <br>
         <div class="price">Available: <%= pro.available %>kg</div>
 
+        <% if(currUser){ %>
+          <% if(currUser.role!="Farmer"){ %>
+            <form class="form">
 
-        <form class="form">
-          <input type="text" placeholder="1">kg
-          <a href="cart.html" class="addCart">Add to cart</a>
-        </form>
+              <a href="/product/wishlist/add/?userId=<%= currUser._id %>&proId=<%= pro._id %>" class="addCart">Add to Wishlist</a>
+            </form>
+             <hr>
+          <% } %>
+        <% } %>
+
+
         <h3>Product Detail</h3>
         <p><%= pro.details %></p>
 
           <span><b>Create Date:</b>  <%= pro.createDate %></span> <br>
           <span><b>Producer:</b> <a href="/farmer/profile/<%= produc._id %>"><%= produc.name %></a> </span><br>
-          <span><b>status:</b>  Available</span>
+          <% if(currUser) {%>
+
+          <% if(currUser._id.toString() == produc._id.toString()) { %>
+            <div>
+              <a class="btn btn-primary" href="/product/edit/<%= pro.id %>">Edit</a>
+              <a class="btn btn-danger" href="/product/delete/?id=<%= pro.id %>">Delete</a>
+            </div><hr>
+          <% } } %>
+
       </div>
     </div>
   </section>

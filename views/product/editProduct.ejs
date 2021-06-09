@@ -1,0 +1,51 @@
+<%- include('../partial/header') -%>
+<link rel="stylesheet" href="/css/products/create.css">
+
+<div class="main-content">
+
+    <!-- You only need this form and the form-basic.css -->
+
+    <form class="form-basic" method="post" action="/products/edit/<%= cPro.id %>">
+
+        <div class="form-title-row">
+            <h1>Create Product</h1>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <span>Name of Product:</span>
+                <input type="text" value="<%= cPro.name %>" name="name">
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <span>Availabel Quntity:</span>
+                <input type="number" value="<%= cPro.available %>" name="available">
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <span>Price per KG(in ₹):</span>
+                <input type="number" value="<%= cPro.price %>" name="price">
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <span>Details</span>
+                <textarea name="details"><%= cPro.details %></textarea>
+            </label>
+        </div>
+
+
+        <div class="form-row">
+            <button type="submit">Update Product</button>
+        </div>
+
+    </form>
+
+</div>
+
+<%- include('../partial/footer') -%>

@@ -18,7 +18,11 @@
                                         <%= currUser.name %>
                                     </h2>
 
-                                        <%- include('../partial/massages') -%>
+                                    <div class="input-group mb-3">
+                                        <%- include('../partial/massages.ejs') -%>
+
+                                    </div>
+
 
                                         <% if(currUser.role=="Farmer" ){ %>
                                             <a href="/products/myProducts/<%= currUser.id %>">
@@ -30,8 +34,8 @@
                                             </a>
 
                                             <% }else{ %>
-                                                <a href="/products/cart">
-                                                    <button class="btn btn-primary">My cart</button>
+                                                <a href="/products/wishlistAll">
+                                                    <button class="btn btn-primary">Wishlist</button>
                                                 </a>
                                                 <% } %>
 

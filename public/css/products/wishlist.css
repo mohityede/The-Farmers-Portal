@@ -1,0 +1,71 @@
+/* Cart Items */
+.cart {
+    margin: 10rem auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .cart-info {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  th {
+    text-align: left;
+    padding: 0.5rem;
+    color: #fff;
+    background-color: #fc7c7c;
+    font-weight: normal;
+  }
+
+  td {
+    padding: 1rem 0.5rem;
+  }
+
+  td input {
+    width: 5rem;
+    height: 3rem;
+    padding: 0.5rem;
+  }
+
+  td a {
+    color: orangered;
+    font-size: 1.4rem;
+  }
+
+  td img {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 1rem;
+  }
+
+  .total-price {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .total-price table {
+    border-top: 3px solid #fc7c7c;
+    width: 100%;
+    max-width: 35rem;
+  }
+
+  td:last-child {
+    text-align: right;
+  }
+
+  th:last-child {
+    text-align: right;
+  }
+
+  @media only screen and (max-width: 567px) {
+    .cart-info p {
+      display: none;
+    }
+  }
