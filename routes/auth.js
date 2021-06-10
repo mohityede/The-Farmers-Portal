@@ -79,22 +79,27 @@ router.post('/signUp',(req,res)=>{
         phone: phone,
         email: email
     }
-    // if(User.find({email:userData.email})){
-    //     req.flash('error_msg','existing user, Please Login');
-    //     res.redirect('/signUp');
-    // }
 
-        User.register(userData, password, (err,user)=>{
-            if(err){
-                req.flash('error_msg','ERROR: '+err);
-                res.redirect('/signUp');
-            }
-            passport.authenticate('local') (req,res,()=>{
-                req.flash('success_msg','Account created successfully');
-                res.redirect('/login');
+    User.find({email:userData.email},(err,user)=>{
+        if(err){
+            console.log('error in create user')
+        }
+        if(user.length!=0){
+            req.flash('error_msg','existing user, Please Login');
+            res.redirect('/signUp');
+        }else{
+            User.register(userData, password, (err,user)=>{
+                if(err){
+                    req.flash('error_msg',+err);
+                    res.redirect('/signUp');
+                }
+                passport.authenticate('local') (req,res,()=>{
+                    req.flash('success_msg','Account created successfully');
+                    res.redirect('/login');
+                });
             });
-        });
-
+        }
+    })
 });
 
 router.post('/password/change', (req, res)=> {

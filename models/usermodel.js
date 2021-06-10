@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema({
         proPrice: Number
     }],
     org:String,
-    wishlist: [String],
     resetPasswordToken: String,
     resetPasswordExpires: Date
 });

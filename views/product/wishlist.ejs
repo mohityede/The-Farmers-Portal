@@ -5,31 +5,32 @@
   <!-- Cart Items -->
 
     <h1 style="text-align: center; font-size: 40px;">My Wishlist</h1>
-    <div id="UserId" style="display:none"><%= currUser._id %></div>
+
 
   <div class="container-md cart">
+
     <table>
       <tr>
         <th>Product</th>
         <th>Quantity</th>
         <th>Price</th>
       </tr>
-      <div id="temp"></div>
-      <% for(let i=0;i<2;i++){ %>
+
+      <% for(let i=0;i<arr.length;i++){ %>
         <tr>
             <td>
               <div class="cart-info">
                 <img src="/img/account/logo.jpeg" alt="produt Img">
                 <div>
-                  <p>2</p>
+                  <p><a style="font-size: 30px; color: black;" href="/product/details/<%= arr[i].proId %>"><%= arr[i].proName %></a> </p>
 
                   <br />
-                  <a href="/product/wishlist/remove">remove</a>
+                  <a href="/product/wishlist/remove/?userId=<%= currUser._id %>&proId=<%= arr[i].proId %>">remove</a>
                 </div>
               </div>
             </td>
-            <td>available quan</td>
-            <td>₹ 50.00</td>
+            <td><%= arr[i].proAvailable %></td>
+            <td>₹ <%= arr[i].proPrice %></td>
           </tr>
       <% } %>
 

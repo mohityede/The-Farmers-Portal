@@ -30,6 +30,7 @@ const User = require('./models/usermodel');
 const Product = require('./models/products');
 
 mongoose.connect('mongodb://localhost:27017/farmerport', {
+    useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

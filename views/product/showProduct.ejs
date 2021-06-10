@@ -1,9 +1,9 @@
 <%- include('../partial/header') -%>
-<link rel="stylesheet" href="/css/products/show.css">
-<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+  <link rel="stylesheet" href="/css/products/show.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
-<!-- Product Details -->
-<section class="section product-detail">
+  <!-- Product Details -->
+  <section class="section product-detail">
     <div class="details container-md">
       <div class="left">
         <div class="w3-content w3-display-container">
@@ -11,55 +11,68 @@
             <div class="w3-display-container mySlides">
               <img src="/img/account/logo.jpeg" style="width:100%">
             </div>
-          <% }else{ %>
-            <% for(let i=0;i<pro.imgUrl.length;i++){ %>
-              <div class="w3-display-container mySlides">
-                <img src="<%= pro.imgUrl[i] %>" style="width:100%">
-              </div>
-            <% } %>
-          <% } %>
+            <% }else{ %>
+              <% for(let i=0;i<pro.imgUrl.length;i++){ %>
+                <div class="w3-display-container mySlides">
+                  <img src="<%= pro.imgUrl[i] %>" style="width:100%">
+                </div>
+                <% } %>
+                  <% } %>
 
 
-            <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
-            <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+                    <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+                    <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
 
-            </div>
+        </div>
 
       </div>
       <div class="right">
         <span>Home/products</span>
-        <h1><%= pro.name %></h1>
+        <h1>
+          <%= pro.name %>
+        </h1>
         <div class="price">Price: ₹ <%= pro.price %> /kg</div>
         <br>
         <div class="price">Available: <%= pro.available %>kg</div>
 
         <% if(currUser){ %>
-          <% if(currUser.role!="Farmer"){ %>
-            <form class="form">
+          <% if(currUser.role!="Farmer" ){ %>
 
-              <a href="/product/wishlist/add/?userId=<%= currUser._id %>&proId=<%= pro._id %>" class="addCart">Add to Wishlist</a>
-            </form>
-             <hr>
-          <% } %>
-        <% } %>
+                <form class="form">
+
+                  <a href="/product/wishlist/add/?userId=<%= currUser._id %>&proId=<%= pro._id %>" class="addCart">Add to
+                    Wishlist</a>
+                  </form>
+                  <hr>
+              <% } %>
+
+                <% } %>
 
 
-        <h3>Product Detail</h3>
-        <p><%= pro.details %></p>
 
-          <span><b>Create Date:</b>  <%= pro.createDate %></span> <br>
-          <span><b>Producer:</b> <a href="/farmer/profile/<%= produc._id %>"><%= produc.name %></a> </span><br>
-          <% if(currUser) {%>
+                    <h3>Product Detail</h3>
+                    <p>
+                      <%= pro.details %>
+                    </p>
 
-          <% if(currUser._id.toString() == produc._id.toString()) { %>
-            <div>
-              <a class="btn btn-primary" href="/product/edit/<%= pro.id %>">Edit</a>
-              <a class="btn btn-danger" href="/product/delete/?id=<%= pro.id %>">Delete</a>
-            </div><hr>
-          <% } } %>
+                    <span><b>Create Date:</b>
+                      <%= pro.createDate %>
+                    </span> <br>
+                    <span><b>Producer:</b> <a href="/farmer/profile/<%= produc._id %>">
+                        <%= produc.name %>
+                      </a> </span><br>
+                    <% if(currUser) {%>
+
+                      <% if(currUser._id.toString()==produc._id.toString()) { %>
+                        <div>
+                          <a class="btn btn-primary" href="/product/edit/<%= pro.id %>">Edit</a>
+                          <a class="btn btn-danger" href="/product/delete/?id=<%= pro.id %>">Delete</a>
+                        </div>
+                        <hr>
+                        <% } } %>
 
       </div>
     </div>
   </section>
-<script src="/js/products/show.js"></script>
-<%- include('../partial/footer') -%>
+  <script src="/js/products/show.js"></script>
+  <%- include('../partial/footer') -%>

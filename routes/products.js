@@ -119,50 +119,56 @@ router.get('/product/edit/:id',isAuthenticedUser,(req,res)=>{
     })
 })
 
-router.get('/products/wishlistAll',(req,res)=>{
-    res.render('product/wishlist');
-})
-
 router.get('/products/wishlist/:id', (req,res)=>{
     let searchQuery = {_id:req.params.id};
-
-
     User.findOne(searchQuery).exec((err,user)=>{
         if(err){
             return console.log("error in user find")
         }
-        let proArray= [];
         let dataArr = user.wishlist;
-        dataArr.forEach(proStr=>{
-            console.log("inside forecah")
-            Product.findOne({_id:proStr},(err,pro)=>{
-                if(err=>{
-                    return console.log("error in find product");
-                })
-                console.log("inside find")
-                console.log(pro);
-                proArray.push(pro);
-            })
-        })
-
-        console.log("outside forEch"+proArray);
-        console.log("over")
-        res.send(proArray);
+        return res.render('product/wishlist',{arr:dataArr});
 })
 })
 
 router.get('/product/wishlist/add/',isAuthenticedUser, (req,res)=>{
     let user= req.query.userId;
     let product= req.query.proId;
-    User.findOneAndUpdate({_id:user},{
-        $push:{wishlist:product}
+    let temp;
+    Product.findOne({_id:product},(err,pro)=>{
+        if(err){
+            console.log("error in findig product")
+        }
+
+        temp={
+            proId: pro._id,
+            proName: pro.name,
+            proAvailable: pro.available,
+            proPrice: pro.price
+        }
+        User.findOneAndUpdate({_id:user},{
+            $push:{wishlist:temp}
+        })
+        .then(user=>{
+            req.flash('success_msg','Product added to wishlist sucessfully.');
+            res.redirect('/profile'); // back means same page..(/)
+        })
+        .catch(err=>{
+            return console.log("error in adding whishlist"+err);
+        })
     })
-    .then(user=>{
-        req.flash('success_msg','Product added to wishlist sucessfully.');
-        res.redirect('/profile'); // back means same page..(/)
+})
+
+router.get('/product/wishlist/remove/', (req,res)=>{
+    let user= req.query.userId;
+    let product= req.query.proId;
+    let str = "/products/wishlist/"+user;
+
+    User.updateOne({_id:user},{$pull:{"wishlist":{"proId":product}}})
+    .then(data=>{
+        return res.redirect(str);
     })
     .catch(err=>{
-        return console.log("error in adding whishlist");
+        console.log("erorr in remove wishlist")
     })
 })
 
