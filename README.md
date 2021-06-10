@@ -31,40 +31,12 @@
 - Provide best qulity of product to consumer
 - Less transportation use
 
-### Schema:
-- Farmer
-    - Full name
-    - Location
-    - Phone
-    - Email
-    - Products
-    - image
-    - Discription
-- Consumer
-    - Full name
-    - Location
-    - Phone
-    - Email
-    - Oraganization
-    - image
-- Product
-    - Name
-    - Type
-    - Price
-    - Create date
-    - Expiry date
-    - Owner
-    - Quantity
-    - Images
-    - Status
-    - Last update
-
 ### Visual representation
 Sitemap: https://whimsical.com/sitemap-6hYvXFWpT4tcjMfWrbNqKH
 
 Workflow diagram: https://whimsical.com/workflow-diagram-EX3JiHS2FRwoTCW13Jvhu3@2Ux7TurymNDZhfDSuqHy
 
-Wireframe: https://whimsical.com/window-page-Aa9HiUfDcH7MxMrBhd9Bxp
+Wireframe: https://whimsical.com/clg-project-SS5yvCubdBu2A9Tf2b1zTm
 
 ### Technical Requirement
 #### Hardware:
