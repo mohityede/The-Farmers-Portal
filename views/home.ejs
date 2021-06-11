@@ -16,6 +16,7 @@
 
   <!--Latest -->
 
+
   <section id="featured" class="section featured">
     <div class="title">
       <h1>Latest Products</h1>
@@ -23,20 +24,21 @@
 
 
     <div class="product-center container">
-      <% for(let i=0;i<8;i++){ %>
+      <% for(let i=0;i<allPro.length && i<4 ;i++){ %>
         <div class="product">
           <div class="product-header">
-            <img src="img/account/logo.jpeg">
+            <% if(allPro[i].imgUrl.length==0){ %>
+              <img src="/img/account/logo.jpeg" alt="logo">
+          <% }else{ %>
+            <img src="<%= allPro[i].imgUrl[0] %>">
+          <% } %>
 
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-            </ul>
           </div>
           <div class="product-footer">
-            <a href="#">
-              <h3>Product</h3>
+            <a href="/product/details/<%= allPro[i]._id %>">
+              <h3><%= allPro[i].name %></h3>
             </a>
-            <h4 class="price">50</h4>
+            <h4 class="price"><%= allPro[i].price %></h4>
           </div>
         </div>
         <% } %>
@@ -50,44 +52,42 @@
       <div class="testimonial">
         <span>&ldquo;</span>
         <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus rerum error fug or sit, amet consectetur adipisicing elit. Debitis,
-          fugiat labore. Veritatis et omnis consequatur.
+        Jai Jawaan Jai Kisan
         </p>
         <div class="rating">
           <i class="bx bxs-star"></i>
           <i class="bx bxs-star"></i>
           <i class="bx bxs-star"></i>
           <i class="bx bxs-star"></i>
-          <i class="bx bx-star"></i>
+          <i class="bx bxs-star"></i>
         </div>
+
         <div class="img-cover">
           <img src="img/account/logo.jpegg" alt="" />
         </div>
-        <h4>user name</h4>
+        <h4>Lal Bahadur Shastri</h4>
       </div>
       <div class="testimonial">
         <span>&ldquo;</span>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
-          fugiat labore. Veritatis et omnis consequatur.
+          Once in life you need a doctor, a lawyer, a policeman and a preacher, but every day, three times a day, you need a farmer.
         </p>
         <div class="rating">
           <i class="bx bxs-star"></i>
           <i class="bx bxs-star"></i>
           <i class="bx bxs-star"></i>
           <i class="bx bxs-star"></i>
-          <i class="bx bx-star"></i>
+          <i class="bx bxs-star"></i>
         </div>
         <div class="img-cover">
           <img src="img/account/logo.jpegg" alt="" />
         </div>
-        <h4>user name</h4>
+        <h4>Unknown</h4>
       </div>
       <div class="testimonial">
         <span>&ldquo;</span>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
-          fugiat labore. Veritatis et omnis consequatur.
+          A good farmer is nothing more nor less than a handy mans with sense of humans
         </p>
         <div class="rating">
           <i class="bx bxs-star"></i>
@@ -99,7 +99,7 @@
         <div class="img-cover">
           <img src="img/account/logo.jpegg" alt="" />
         </div>
-        <h4>user name</h4>
+        <h4>E.B. White</h4>
       </div>
     </div>
   </section>

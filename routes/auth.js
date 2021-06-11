@@ -30,10 +30,6 @@ router.get('/forgot',(req,res)=>{
     res.render('auth/forgot');
 });
 
-router.get('/', (req,res)=>{
-    res.render('home');
-});
-
 router.get('/logOut',isAuthenticedUser,(req,res)=>{
     req.logout();
     req.flash('success_msg','You logged out successfully');

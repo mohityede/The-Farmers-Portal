@@ -46,6 +46,20 @@ let upload = multer({
     }
 });
 
+router.get('/', (req,res)=>{
+    Product.find({},(err,pro)=>{
+        if(err){
+            console.log("error in finding product: home")
+        }
+        User.find({},(err,user)=>{
+            if(err){
+                console.log("error in finding user : home")
+            }
+            return res.render('home',{allUser:user, allPro: pro});
+        })
+    })
+});
+
 router.get('/products/create',isAuthenticedUser, (req,res)=>{
     res.render('product/createProduct');
 });
@@ -78,7 +92,7 @@ router.get('/products/all',(req,res)=>{
         }
         return res.render('product/allProducts',{
             pro: product
-        });
+        });6
     }).sort({createDate:-1});
 })
 

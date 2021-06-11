@@ -1,0 +1,23 @@
+.contant-about {
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.contant-about img{
+    width: 100%;
+    height: 400px;
+    margin: 5px;
+}
+
+@media only screen and (min-width: 700px) {
+    .contant-about {
+        margin: 10px 20% 10px 20%;
+    }
+    .contant-about img{
+        width: 100%;
+        height: 400px;
+        padding: 5px 50px;
+
+    }
+  }
