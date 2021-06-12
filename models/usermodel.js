@@ -5,6 +5,11 @@ const userSchema = new mongoose.Schema({
     name: String,
     phone: String,
     email: String,
+    aadharNum: String,
+    aadharState: {
+        type: Boolean,
+        default: false
+    },
     password: {
         type: String,
         select: false

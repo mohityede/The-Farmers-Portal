@@ -88,6 +88,26 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
+                                    <p class="mb-0">Aadhar Number</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.aadharNum %> &Tab;
+                                    <% if(currUser.aadharState){ %>
+                                        <span style="color: green; font-weight: bold;">Verified</span>
+                                    <% }else{ %>
+                                        <form action="/verifyAadhar/<%= currUser._id %>" method="post">
+
+                                        <input type="text" placeholder="012345678901"  name="aadhar" pattern="[0-9]{12}" required>
+                                        <button type="submit" style="background-color: red;"> verify</button>
+                                    </form>
+                                    <% } %>
+
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-sm-3">
                                     <p class="mb-0">Local Address</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
@@ -133,13 +153,15 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info" target="__blank" href="profile/edit">Edit</a>
+                                    <a class="btn btn-info"
+                                    href="profile/edit">Edit</a>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info" target="__blank" href="/password/change">Change Password</a>
+                                    <a class="btn btn-info"
+                                    href="/password/change">Change Password</a>
                                 </div>
                             </div>
                             <hr>

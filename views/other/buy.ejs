@@ -1,0 +1,51 @@
+<%- include('../partial/header') -%>
+<link rel="stylesheet" href="/css/products/create.css">
+
+<div class="main-content">
+
+    <!-- You only need this form and the form-basic.css -->
+
+    <form class="form-basic" method="post" action="#">
+
+        <div class="form-title-row">
+            <h1>Buy Product</h1>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <span>Name of Product:</span>
+                <input type="text" value="Name" name="name">
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <span>Quntity Required:</span>
+                <input type="number" placeholder="req. quntity" name="available">
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <span> Offered Price per KG(in ₹):</span>
+                <input type="number" placeholder="Offered price" name="price">
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                <span>Remarks</span>
+                <textarea name="details">remarsk</textarea>
+            </label>
+        </div>
+
+
+        <div class="form-row">
+            <button type="submit">Set Bit</button>
+        </div>
+
+    </form>
+
+</div>
+
+<%- include('../partial/footer') -%>

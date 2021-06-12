@@ -186,6 +186,10 @@ router.get('/product/wishlist/remove/', (req,res)=>{
     })
 })
 
+router.get('/product/buy',(req,res)=>{
+    return res.render('other/buy');
+})
+
 // Post requests
 router.post('/products/create',isAuthenticedUser, upload.array('multiFile'),(req,res,next)=>{
 

@@ -4,6 +4,7 @@ const passport = require('passport');
 const crypto = require('crypto');
 const async = require('async');
 const nodemailer = require('nodemailer');
+const validator = require('aadhaar-validator');
 
 // require userModel
 const User = require('../models/usermodel');
@@ -62,15 +63,37 @@ router.get('/about',(req,res)=>{
 });
 
 //POST routes
+router.post('/verifyAadhar/:id',(req,res)=>{
+    console.log(req.body);
+    let searchQuery = req.body.aadhar;
+    let userId = req.params.id;
+    let verify = validator.isValidNumber(searchQuery);
+    console.log("varify: "+ verify);
+    if(verify){
+        User.findOneAndUpdate({_id:userId},{$set:{aadharNum:searchQuery, aadharState: true}},{new:false},(err,data)=>{
+            if(err){
+                console.log("error in updating aadhar")
+            }
+            req.flash('success_msg', 'Aadhar updated succefully');
+                res.redirect('/profile');
+        })
+
+    }else{
+        req.flash('error_msg', 'Aadhar number is not valid');
+        res.redirect('/profile');
+    }
+})
+
 router.post('/login', passport.authenticate('local',{
-    successRedirect: '/',
+    successRedirect: '/profile',
     failureRedirect: '/login',
     failureFlash: 'Invalid Email or Password. Try Again!'
 }));
 
 router.post('/signUp',(req,res)=>{
-    let {name,phone,email,password} = req.body;
+    let {role,name,phone,email,password} = req.body;
     let userData = {
+        role: role,
         name: name,
         phone: phone,
         email: email

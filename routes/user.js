@@ -34,12 +34,25 @@ router.get('/profile/edit',isAuthenticedUser,(req,res)=>{
 
 router.get('/farmers',(req,res)=>{
     User.find({},(err, user)=>{
-        console.log(user[0]);
+
         if(err){
             console.log("error during fatching data");
             return;
         }
         return res.render('user/allFarmers',{
+            farmer: user
+        });
+    });
+});
+
+router.get('/consumers',(req,res)=>{
+    User.find({},(err, user)=>{
+
+        if(err){
+            console.log("error during fatching data");
+            return;
+        }
+        return res.render('user/allConsumers',{
             farmer: user
         });
     });
