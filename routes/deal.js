@@ -80,6 +80,22 @@ router.get('/notification/:id',(req,res)=>{
     res.render('other/notification')
 })
 
+router.get('/requestSample/',(req,res)=>{
+    let currUserName = req.query.cUserName;
+    let producer = req.query.producer;
+    let productName = req.query.productName;
+    User.updateOne({_id:producer},{
+        $push:{notification:`${currUserName} request for sample of ${productName}`}
+    })
+    .then(user=>{
+        req.flash('success_msg','Request send seccefullly');
+        res.redirect('/profile');
+    })
+    .catch(err=>{
+        console.log("error in request sample");
+    })
+})
+
 // POST req
 router.post('/cart/add/',(req,res)=>{
     let user= req.query.userId;
