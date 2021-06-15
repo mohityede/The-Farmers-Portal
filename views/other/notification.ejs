@@ -1,0 +1,33 @@
+<%- include('../partial/header') -%>
+<link rel="stylesheet" href="/css/products/wishlist.css">
+
+
+<h1 style="text-align: center; font-size: 30px;">My Notifications</h1>
+
+
+  <!-- Cart Items -->
+  <div class="container-md cart">
+    <table style="border: 2px solid black;">
+      <tr >
+        <th style="border: 2px solid black; text-align: left;">massages</th>
+
+      </tr>
+
+      <% for(let i=currUser.notification.length-1;i<=0;i++){ %>
+        <tr>
+          <td style="font-weight: bold; border: 2px solid black; text-align: left;"><%= currUser.notification[i] %></td>
+        </tr>
+
+
+      <% } %>
+
+    </table>
+
+
+
+
+  </div>
+
+
+  <%- include('../partial/footer') -%>
+

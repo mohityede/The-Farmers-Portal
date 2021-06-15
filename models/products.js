@@ -10,7 +10,22 @@ const productSchema = new mongoose.Schema({
     createDate: {
         type:Date,
         default: Date.now
-    }
+    },
+    bid:[{
+        consumerName: String,
+        consumerId: String,
+        status: {
+            type: String,
+            default: "incomplete"
+        },
+        dated: {
+            type:Date,
+            default: Date.now
+        },
+        quantity: Number,
+        bidPrice: Number,
+        remark: String
+    }]
 });
 
 module.exports = mongoose.model('products',productSchema);

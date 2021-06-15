@@ -1,0 +1,83 @@
+<%- include('../partial/header') -%>
+<link rel="stylesheet" href="/css/products/wishlist.css">
+
+<h1 style="text-align: center; font-size: 30px;">My Cart Items</h1>
+
+
+  <!-- Cart Items -->
+  <div class="container-md cart">
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+      <% let subTotal = 0 %>
+      <% for(let i=0;i<arr.length;i++){ %>
+        <tr>
+          <td>
+            <div class="cart-info">
+              <% if(arr[i].proImg===''){ %>
+                <img src="/img/account/logo.jpeg" alt="produt Img">
+              <% }else{ %>
+                <img src="<%= arr[i].proImg %>" alt="produt Img">
+
+              <% } %>
+              <div>
+                <p>
+                  <a href="/product/details/<%= arr[i].proId %>" style="font-size: 20px; color: black;">
+                    <%= arr[i].proName %>
+                  </a>
+                  </p>
+                <span>Price: ₹ <%= arr[i].proPrice %></span>
+                <br />
+                <a href="/cart/remove/?userId=<%= currUser._id %>&proId=<%= arr[i].proId %>">remove</a>
+              </div>
+            </div>
+          </td>
+
+          <td><input type="text" value="<%= arr[i].proQuantity %>" readonly></td>
+          <td>₹ <%= (arr[i].proPrice*arr[i].proQuantity).toFixed(2) %></td>
+        </tr>
+        <% subTotal+= arr[i].proPrice*arr[i].proQuantity %>
+
+      <% } %>
+
+    </table>
+
+    <div class="total-price">
+      <table>
+        <tr>
+          <td>Subtotal</td>
+          <td>₹ <%= subTotal.toFixed(2) %></td>
+        </tr>
+        <% let tax = (subTotal*5)/100 %>
+        <tr>
+          <td>Tax (5%)</td>
+          <td>₹ <%= tax.toFixed(2) %></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>₹ <%= (tax+subTotal).toFixed(2) %> </td>
+        </tr>
+      </table>
+
+    </div>
+    <% if(arr.length!=0){ %>
+      <div style="text-align: right;">
+        <a  href="/payment/offline">
+          <button style="font-size: 15px;"  class="btn btn-primary">Offline Payment</button>
+      </a>
+      <a href="/payment/online/?proId=<%= arr[0].proId %>&amount=<%= (tax+subTotal).toFixed(2) %>">
+        <button style="font-size: 15px;" class="btn btn-primary">Online Payment</button>
+    </a>
+      </div>
+    <% } %>
+
+
+
+  </div>
+
+
+  <%- include('../partial/footer') -%>
+

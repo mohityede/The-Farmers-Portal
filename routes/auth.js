@@ -5,9 +5,11 @@ const crypto = require('crypto');
 const async = require('async');
 const nodemailer = require('nodemailer');
 const validator = require('aadhaar-validator');
+const fast2sms = require('fast-two-sms')
 
 // require userModel
 const User = require('../models/usermodel');
+const { authenticate } = require('passport');
 
 // function to check user is authonticated or not
 function isAuthenticedUser(req,res,next){
@@ -81,6 +83,42 @@ router.post('/verifyAadhar/:id',(req,res)=>{
     }else{
         req.flash('error_msg', 'Aadhar number is not valid');
         res.redirect('/profile');
+    }
+})
+
+let otp;
+
+router.post('/verifyPhone',isAuthenticedUser, async (req,res)=>{
+
+    let phone = req.body.phone;
+    otp = Math.floor(1000 + Math.random() * 9000);
+
+    const response = await fast2sms.sendMessage({authorization : process.env.SMS_API_KEY, message:`The Farmers Portal one time password(OTP) is ${otp}. Don't share with anyone.`, numbers:[phone]});
+    console.log(response)
+    req.flash('success_msg', `OTP send to your registered mobile number.`);
+    res.render('auth/mobileOTP',{phone:phone});
+})
+
+router.post('/OTP/verify/',(req,res)=>{
+    let enterOTP = req.body.OTP
+    let userId = req.query.id
+    let ph = req.query.phone
+
+
+    if(enterOTP==otp){
+        User.findOneAndUpdate({_id:userId},{
+            $set:{phone:ph,phoneState:true}
+        })
+        .then(user=>{
+            req.flash('success_msg', `mobile number verified successfully`);
+            res.redirect('/profile');
+        })
+        .catch(err=>{
+            console.log("error in otp verify")
+        })
+    }else{
+        req.flash('error_msg','OTP not matched');
+        return res.render('auth/mobileOTP',{phone:ph});
     }
 })
 

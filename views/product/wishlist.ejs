@@ -16,13 +16,21 @@
         <th>Price</th>
       </tr>
 
+
       <% for(let i=0;i<arr.length;i++){ %>
+
         <tr>
             <td>
               <div class="cart-info">
-                <img src="/img/account/logo.jpeg" alt="produt Img">
+                <% if(arr[i].proImg===''){ %>
+                  <img src="/img/account/logo.jpeg" alt="produt Img">
+                <% }else{ %>
+                  <img src="<%= arr[i].proImg %>" alt="produt Img">
+
+                <% } %>
+
                 <div>
-                  <p><a style="font-size: 30px; color: black;" href="/product/details/<%= arr[i].proId %>"><%= arr[i].proName %></a> </p>
+                  <p><a style="font-size: 20px; color: black;" href="/product/details/<%= arr[i].proId %>"><%= arr[i].proName %></a> </p>
 
                   <br />
                   <a href="/product/wishlist/remove/?userId=<%= currUser._id %>&proId=<%= arr[i].proId %>">remove</a>

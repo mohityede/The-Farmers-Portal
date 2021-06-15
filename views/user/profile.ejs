@@ -25,6 +25,11 @@
 
 
                                         <% if(currUser.role=="Farmer" ){ %>
+                                            <a href="/notification/<%= currUser._id %>">
+                                                <button class="btn btn-primary">Notifications</button>
+                                            </a>
+                                            <hr>
+
                                             <a href="/products/myProducts/<%= currUser.id %>">
                                                 <button class="btn btn-primary">My Products</button>
                                             </a>
@@ -34,8 +39,17 @@
                                             </a>
 
                                             <% }else{ %>
+                                                <a href="/notification/<%= currUser._id %>">
+                                                    <button class="btn btn-primary">Notifications</button>
+                                                </a>
+                                                <hr>
+
                                                 <a href="/products/wishlist/<%= currUser._id %>">
                                                     <button class="btn btn-primary">Wishlist</button>
+                                                </a>
+                                                <hr>
+                                                <a href="/myCart/<%= currUser._id %>">
+                                                    <button class="btn btn-primary">My cart</button>
                                                 </a>
                                                 <% } %>
 
@@ -82,7 +96,17 @@
                                     <p class="mb-0">Mobile</p>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <%= currUser.phone %>
+
+                                    <% if(currUser.phoneState){ %>
+                                        <%= currUser.phone %> &Tab;
+                                        <span style="color: green; font-weight: bold;">Verified</span>
+                                    <% }else{ %>
+                                        <form action="/verifyPhone" method="post">
+
+                                        <input type="text" placeholder="0123456789" value="<%= currUser.phone %>"  name="phone" pattern="[0-9]{10}" required>
+                                        <button type="submit" style="background-color: red;"> Send OTP</button>
+                                    </form>
+                                    <% } %>
                                 </div>
                             </div>
                             <hr>

@@ -149,11 +149,13 @@ router.get('/product/wishlist/add/',isAuthenticedUser, (req,res)=>{
     let product= req.query.proId;
     let temp;
     Product.findOne({_id:product},(err,pro)=>{
+
         if(err){
             console.log("error in findig product")
         }
 
         temp={
+            proImg: pro.imgUrl[0],
             proId: pro._id,
             proName: pro.name,
             proAvailable: pro.available,
@@ -184,10 +186,6 @@ router.get('/product/wishlist/remove/', (req,res)=>{
     .catch(err=>{
         console.log("erorr in remove wishlist")
     })
-})
-
-router.get('/product/buy',(req,res)=>{
-    return res.render('other/buy');
 })
 
 // Post requests

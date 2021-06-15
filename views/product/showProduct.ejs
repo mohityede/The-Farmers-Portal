@@ -1,5 +1,7 @@
 <%- include('../partial/header') -%>
   <link rel="stylesheet" href="/css/products/show.css">
+<link rel="stylesheet" href="/css/products/wishlist.css">
+
   <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
   <!-- Product Details -->
@@ -38,46 +40,117 @@
         <% if(currUser){ %>
           <% if(currUser.role!="Farmer" ){ %>
 
-                <form class="form">
+            <form class="form">
 
-                  <a href="/product/wishlist/add/?userId=<%= currUser._id %>&proId=<%= pro._id %>" class="addCart">Add to
-                    Wishlist</a>
-                  </form>
-                  <hr>
-                  <form class="form">
+              <a href="/product/wishlist/add/?userId=<%= currUser._id %>&proId=<%= pro._id %>" class="addCart">Add to
+                Wishlist</a>
+            </form>
+            <hr>
 
-                    <a href="/product/buy" class="addCart">Bit</a>
-                    </form>
-                    <hr>
+            <form class="form" action="/cart/add/?userId=<%= currUser._id %>&proId=<%= pro._id %>" method="POST">
+              <input style="width: 100px;" type="number" placeholder="<%= pro.available %>" max="<%= pro.available %>" name="quantity" required>
+              <button type="submit" class="addCart">Add to Cart</button>
+
+            </form>
+            <hr>
+            <form class="form">
+
+              <a href="/deal/bid/<%= pro._id %>" class="addCart">Bid</a>
+              <a href="" class="addCart">Request Sample</a>
+
+            </form>
+            <hr>
+            <% } %>
+
               <% } %>
 
-                <% } %>
 
 
+                <h3>Product Detail</h3>
+                <p>
+                  <%= pro.details %>
+                </p>
 
-                    <h3>Product Detail</h3>
-                    <p>
-                      <%= pro.details %>
-                    </p>
+                <span><b>Create Date:</b>
+                  <%= pro.createDate %>
+                </span> <br>
+                <span><b>Producer:</b> <a href="/farmer/profile/<%= produc._id %>">
+                    <%= produc.name %>
+                  </a> </span><br>
 
-                    <span><b>Create Date:</b>
-                      <%= pro.createDate %>
-                    </span> <br>
-                    <span><b>Producer:</b> <a href="/farmer/profile/<%= produc._id %>">
-                        <%= produc.name %>
-                      </a> </span><br>
-                    <% if(currUser) {%>
 
-                      <% if(currUser._id.toString()==produc._id.toString()) { %>
-                        <div>
-                          <a class="btn btn-primary" href="/product/edit/<%= pro.id %>">Edit</a>
-                          <a class="btn btn-danger" href="/product/delete/?id=<%= pro.id %>">Delete</a>
-                        </div>
-                        <hr>
-                        <% } } %>
+                <% if(currUser) {%>
+
+                  <% if(currUser._id.toString()==produc._id.toString()) { %>
+                    <div>
+                      <a class="btn btn-primary" href="/product/edit/<%= pro.id %>">Edit</a>
+                      <a class="btn btn-danger" href="/product/delete/?id=<%= pro.id %>">Delete</a>
+
+                    </div>
+                    <hr>
+                    <% } } %>
+
 
       </div>
     </div>
+    <h1 style="text-align: center; font-size: 30px;">Bids</h1>
+
+
+    <!-- Cart Items -->
+    <div style="margin-bottom: 100px;" class="container-md">
+      <table>
+        <tr>
+          <th>Consumer</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <% if(currUser) {%>
+
+            <% if(currUser._id.toString()==produc._id.toString()) { %>
+              <th>Action</th>
+
+          <% } } %>
+        </tr>
+
+        <% for(let i=0;i<pro.bid.length;i++){ %>
+          <tr>
+            <td>
+              <div class="cart-info">
+
+                <div>
+
+                    <a href="/farmer/profile/<%= pro.bid[i].consumerId %>" style="font-size: 20px; color: black;">
+                      <%= pro.bid[i].consumerName %>
+                    </a>
+
+
+
+                </div>
+              </div>
+            </td>
+
+            <td><input type="text" value="<%= pro.bid[i].quantity %>" readonly></td>
+            <td>₹ <%= pro.bid[i].bidPrice %></td>
+            <% if(currUser) {%>
+
+              <% if(currUser._id.toString()==produc._id.toString()) { %>
+                <td>
+                  <a href="/bid/accept">
+                  <button style="background-color: green;">accept</button>
+
+                  </a>
+                  <a href="/bid/reject">
+                  <button style="background-color: red;">reject</button>
+
+                  </a>
+                </td>
+
+            <% } } %>
+          </tr>
+
+
+        <% } %>
+
+      </table>
   </section>
   <script src="/js/products/show.js"></script>
   <%- include('../partial/footer') -%>

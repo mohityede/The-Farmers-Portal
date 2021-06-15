@@ -23,6 +23,8 @@ const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
 // require product route
 const productRoute = require('./routes/products');
+// require Deal route
+const dealRoute = require('./routes/deal')
 
 // require userModel
 const User = require('./models/usermodel');
@@ -70,6 +72,7 @@ app.use(express.static('public'));
 app.use(authRoute);
 app.use(userRoute);
 app.use(productRoute);
+app.use(dealRoute);
 
 const port = process.env.PORT;
 app.listen(port,()=>{

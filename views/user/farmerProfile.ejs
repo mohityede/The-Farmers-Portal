@@ -17,10 +17,15 @@
                                     <h2>
                                         <%= cUser.name %>
                                     </h2>
+                                    <% if(currUser){ %>
+                                        <% if(currUser==="Farmer"){ %>
+                                            <a href="/products/myProducts/<%= cUser.id %>">
+                                                <button class="btn btn-primary">My Products</button>
+                                            </a><hr>
+                                        <% } %>
+                                    <% } %>
 
-                                        <a href="/products/myProducts/<%= cUser.id %>">
-                                            <button class="btn btn-primary">My Products</button>
-                                        </a><hr>
+
                                 </div>
                             </div>
                         </div>
