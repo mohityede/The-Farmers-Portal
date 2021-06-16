@@ -51,35 +51,32 @@ router.get('/reset/:token', (req, res)=> {
                 req.flash('error_msg', 'Password reset token in invalid or has been expired.');
                 res.redirect('/forgot');
             }
-
             res.render('auth/newPassword', {token : req.params.token});
         })
         .catch(err => {
-            req.flash('error_msg', 'ERROR: '+err);
+            req.flash('error_msg', 'ERROR: Token is expired');
             res.redirect('/forgot');
         });
 });
 
-router.get('/about',(req,res)=>{
-    res.render('other/about');
-});
-
 //POST routes
-router.post('/verifyAadhar/:id',(req,res)=>{
-    console.log(req.body);
+router.post('/verifyAadhar/:id',isAuthenticedUser, (req,res)=>{
     let searchQuery = req.body.aadhar;
     let userId = req.params.id;
     let verify = validator.isValidNumber(searchQuery);
-    console.log("varify: "+ verify);
     if(verify){
-        User.findOneAndUpdate({_id:userId},{$set:{aadharNum:searchQuery, aadharState: true}},{new:false},(err,data)=>{
+        User.findOneAndUpdate({_id:userId},{
+            $set:{
+                aadharNum:searchQuery,
+                aadharState: true
+            }},{new:false},
+            (err,data)=>{
             if(err){
                 console.log("error in updating aadhar")
             }
             req.flash('success_msg', 'Aadhar updated succefully');
                 res.redirect('/profile');
         })
-
     }else{
         req.flash('error_msg', 'Aadhar number is not valid');
         res.redirect('/profile');
@@ -89,12 +86,9 @@ router.post('/verifyAadhar/:id',(req,res)=>{
 let otp;
 
 router.post('/verifyPhone',isAuthenticedUser, async (req,res)=>{
-
     let phone = req.body.phone;
     otp = Math.floor(1000 + Math.random() * 9000);
-
-    const response = await fast2sms.sendMessage({authorization : process.env.SMS_API_KEY, message:`The Farmers Portal one time password(OTP) is ${otp}. Don't share with anyone.`, numbers:[phone]});
-    console.log(response)
+    const response = await fast2sms.sendMessage({authorization : process.env.SMS_API_KEY, message:`The Farmers Portal,\none time password(OTP) is ${otp}. Don't share with anyone.`, numbers:[phone]});
     req.flash('success_msg', `OTP send to your registered mobile number.`);
     res.render('auth/mobileOTP',{phone:phone});
 })
@@ -103,8 +97,6 @@ router.post('/OTP/verify/',(req,res)=>{
     let enterOTP = req.body.OTP
     let userId = req.query.id
     let ph = req.query.phone
-
-
     if(enterOTP==otp){
         User.findOneAndUpdate({_id:userId},{
             $set:{phone:ph,phoneState:true}
@@ -136,7 +128,6 @@ router.post('/signUp',(req,res)=>{
         phone: phone,
         email: email
     }
-
     User.find({email:userData.email},(err,user)=>{
         if(err){
             console.log('error in create user')
@@ -147,7 +138,7 @@ router.post('/signUp',(req,res)=>{
         }else{
             User.register(userData, password, (err,user)=>{
                 if(err){
-                    req.flash('error_msg',+err);
+                    req.flash('error_msg','Something is wrong');
                     res.redirect('/signUp');
                 }
                 passport.authenticate('local') (req,res,()=>{
@@ -159,12 +150,11 @@ router.post('/signUp',(req,res)=>{
     })
 });
 
-router.post('/password/change', (req, res)=> {
+router.post('/password/change',isAuthenticedUser, (req, res)=> {
     if(req.body.password !== req.body.confirmpassword) {
         req.flash('error_msg', "Password don't match. Type again!");
         return res.redirect('/password/change');
     }
-
     User.findOne({email : req.user.email})
         .then(user => {
             user.setPassword(req.body.password, err=>{
@@ -174,7 +164,7 @@ router.post('/password/change', (req, res)=> {
                         res.redirect('/');
                     })
                     .catch(err => {
-                        req.flash('error_msg', 'ERROR: '+err);
+                        req.flash('error_msg', 'ERROR: in changing password');
                         res.redirect('/password/change');
                     });
             });
@@ -205,7 +195,7 @@ router.post('/forgot',(req,res,next)=>{
                     });
                 })
                 .catch(err=>{
-                    req.flash('error_msg','ERROR'+err);
+                    req.flash('error_msg','ERROR: in forgot password route');
                     res.redirect('/forgot');
                 });
         },
@@ -218,7 +208,6 @@ router.post('/forgot',(req,res,next)=>{
                     pass: process.env.GMAIL_PASSWORD
                 }
             });
-
             let mailOptions = {
                 to: user.email,
                 from : 'The Farmer Portal yedemohitkumar@gmail.com',

@@ -23,6 +23,8 @@
                 <div class="col-md-8">
                     <div class="card mb-3">
                         <form action="/profile/edit/<%= currUser._id %>" method="POST" class="card-body">
+                            <h2 style="font-weight: bold;">Personal Details</h2>
+                            <hr>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Full Name</p>
@@ -91,7 +93,6 @@
                                         <option value="Pondicherry">Pondicherry</option>
                                     </select>
                                 </div>
-
                             </div>
 
                             <hr>
@@ -126,6 +127,47 @@
                                 </div>
                             </div>
                             <hr>
+                            <% if(currUser.role == 'Farmer'){ %>
+                                <h2 style="font-weight: bold;">Bank Details</h2>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Name of the Bank</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="bankName" placeholder="<%= currUser.bankDetails.bankName %>">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Account Number</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="accNum" placeholder="<%= currUser.bankDetails.accNum %>">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">IFSC</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="ifsc" placeholder="<%= currUser.bankDetails.ifsc %>">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Bank Branch</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" name="branch" placeholder="<%= currUser.bankDetails.branch %>">
+                                </div>
+                            </div>
+                            <hr>
+                            <% } %>
+
                             <div class="row">
                                 <div class="col-sm-12">
                                     <button type="submit">Save</button>

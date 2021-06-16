@@ -11,13 +11,15 @@ navOpen.addEventListener("click", () => {
   }
 });
 
-navClose.addEventListener("click", () => {
+function closeNav(){
   if (navLeft < 0) {
     menu.classList.remove("show");
     document.body.classList.remove("show");
     navBar.classList.remove("show");
   }
-});
+}
+
+navClose.addEventListener("click", closeNav);
 
 // Fixed Nav
 const navBar = document.querySelector(".nav");

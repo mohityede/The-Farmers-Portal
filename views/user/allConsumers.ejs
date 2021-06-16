@@ -1,15 +1,10 @@
 <%- include('../partial/header') -%>
 <link rel="stylesheet" href="/css/products/all.css">
-<!-- <link rel="stylesheet" href="/css/home/home.css"> -->
 
-
-
-    <!-- All Products -->
     <section id="featured" class="section featured">
         <div class="title">
           <h1>All Consumers</h1>
         </div>
-
         <div class="product-center container">
           <% for(let i=0;i<farmer.length;i++){ %>
             <% if(farmer[i].role){ %>
@@ -27,10 +22,7 @@
                 </div>
               <% } %>
             <% } %>
-
-
             <% } %>
-
         </div>
       </section>
 

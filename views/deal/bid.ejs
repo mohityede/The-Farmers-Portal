@@ -1,51 +1,48 @@
 <%- include('../partial/header') -%>
-<link rel="stylesheet" href="/css/products/create.css">
+    <link rel="stylesheet" href="/css/products/create.css">
 
-<div class="main-content">
+    <div class="main-content">
 
+        <form class="form-basic" method="post" action="/bid/create/?currUser=<%= currUser._id %>&proId=<%= pro._id %>">
 
-    <form class="form-basic" method="post" action="/bid/create/?currUser=<%= currUser._id %>&proId=<%= pro._id %>">
+            <div class="form-title-row">
+                <h1>Bid Product</h1>
+            </div>
 
-        <div class="form-title-row">
-            <h1>Bid Product</h1>
-        </div>
+            <div class="form-row">
+                <label>
+                    <span>Name of Product:</span>
+                    <input type="text" value="<%= pro.name %>" readonly name="proName">
+                </label>
+            </div>
 
-        <div class="form-row">
-            <label>
-                <span>Name of Product:</span>
-                <input type="text" value="<%= pro.name %>" readonly name="proName">
-            </label>
-        </div>
+            <div class="form-row">
+                <label>
+                    <span>Quntity Required:</span>
+                    <input type="number" max="<%= pro.available %>" placeholder="req. quntity" name="quantity">
+                </label>
+            </div>
 
-        <div class="form-row">
-            <label>
-                <span>Quntity Required:</span>
-                <input type="number" max="<%= pro.available %>" placeholder="req. quntity" name="quantity">
-            </label>
-        </div>
+            <div class="form-row">
+                <label>
+                    <span> Offered Price per KG(in ₹):</span>
+                    <input type="number" placeholder="Offered price" name="price">
+                </label>
+            </div>
 
-        <div class="form-row">
-            <label>
-                <span> Offered Price per KG(in ₹):</span>
-                <input type="number" placeholder="Offered price" name="price">
-            </label>
-        </div>
+            <div class="form-row">
+                <label>
+                    <span>Remarks</span>
+                    <textarea name="remarks"></textarea>
+                </label>
+            </div>
 
-        <div class="form-row">
-            <label>
-                <span>Remarks</span>
-                <textarea name="remarks"></textarea>
-            </label>
-        </div>
+            <input style="display:none" type="text" value="<%= currUser.name %>" name="consumerName">
 
-        <input style="display:none" type="text" value="<%= currUser.name %>" name="consumerName">
+            <div class="form-row">
+                <button type="submit">Set Bit</button>
+            </div>
+        </form>
+    </div>
 
-        <div class="form-row">
-            <button type="submit">Set Bit</button>
-        </div>
-
-    </form>
-
-</div>
-
-<%- include('../partial/footer') -%>
+    <%- include('../partial/footer') -%>

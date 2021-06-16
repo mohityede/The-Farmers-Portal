@@ -39,6 +39,12 @@ const userSchema = new mongoose.Schema({
         proQuantity: Number,
         proPrice: Number,
     }],
+    bankDetails:{
+        bankName: String,
+        accNum: String,
+        ifsc: String,
+        branch: String
+    },
     notification:[String],
     org:String,
     resetPasswordToken: String,

@@ -72,7 +72,7 @@ router.get('/product/details/:id',(req,res)=>{
         }
         User.findOne({_id:product.producer},(err, user)=>{
             if(err){
-                console.log("error in findProducer");
+                console.log("error in find Producer: product details ");
                 return;
             }
             return res.render('product/showProduct',{
@@ -84,7 +84,6 @@ router.get('/product/details/:id',(req,res)=>{
 });
 
 router.get('/products/all',(req,res)=>{
-    // res.render('product/allProducts');
     Product.find({},(err, product)=>{
         if(err){
             console.log("error during fatching data");
@@ -92,12 +91,11 @@ router.get('/products/all',(req,res)=>{
         }
         return res.render('product/allProducts',{
             pro: product
-        });6
+        });
     }).sort({createDate:-1});
 })
 
-router.get('/products/myProducts/:id',(req,res)=>{
-
+router.get('/products/myProducts/:id',isAuthenticedUser, (req,res)=>{
     Product.find({producer:req.params.id},(err, product)=>{
         if(err){
             console.log("error during fatching data");
@@ -109,16 +107,15 @@ router.get('/products/myProducts/:id',(req,res)=>{
     });
 });
 
-router.get('/product/delete/', (req,res)=>{
+router.get('/product/delete/',isAuthenticedUser, (req,res)=>{
     let proId = req.query.id;
-
     Product.findByIdAndDelete(proId, (err) => {
         if(err){
             console.log("error in deleting Product");
             return;
         }
         req.flash('sucess_msg','Product deleted sucessfully.');
-        res.redirect('/profile'); // back means same page..(/)
+        res.redirect('/profile');
     });
 });
 
@@ -133,7 +130,7 @@ router.get('/product/edit/:id',isAuthenticedUser,(req,res)=>{
     })
 })
 
-router.get('/products/wishlist/:id', (req,res)=>{
+router.get('/products/wishlist/:id',isAuthenticedUser, (req,res)=>{
     let searchQuery = {_id:req.params.id};
     User.findOne(searchQuery).exec((err,user)=>{
         if(err){
@@ -149,11 +146,9 @@ router.get('/product/wishlist/add/',isAuthenticedUser, (req,res)=>{
     let product= req.query.proId;
     let temp;
     Product.findOne({_id:product},(err,pro)=>{
-
         if(err){
             console.log("error in findig product")
         }
-
         temp={
             proImg: pro.imgUrl[0],
             proId: pro._id,
@@ -190,14 +185,12 @@ router.get('/product/wishlist/remove/', (req,res)=>{
 
 // Post requests
 router.post('/products/create',isAuthenticedUser, upload.array('multiFile'),(req,res,next)=>{
-
     let imgArr = [];
     const files = req.files;
     files.forEach(file => {
         let url = file.path.replace('public', '');
         imgArr.push(url);
     });
-
     let addPro = {
         name: req.body.name,
         producer : req.body.userId,

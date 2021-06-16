@@ -3,8 +3,6 @@
 
 <div class="main-content">
 
-    <!-- You only need this form and the form-basic.css -->
-
     <form class="form-basic" method="post" action="/products/edit/<%= cPro.id %>">
 
         <div class="form-title-row">
@@ -38,7 +36,6 @@
                 <textarea name="details"><%= cPro.details %></textarea>
             </label>
         </div>
-
 
         <div class="form-row">
             <button type="submit">Update Product</button>

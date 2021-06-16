@@ -34,7 +34,6 @@
     }
   }
 
-
   /* Product */
 .product-center {
     display: grid;
@@ -135,12 +134,6 @@
     opacity: 1;
     transform: translate(0, -50%) scale(1);
   }
-
-  /* .product-header .icons a {
-    display: block;
-    margin-bottom: 1rem;
-  } */
-
 
 .title {
     margin: 4rem 0 7rem 0;

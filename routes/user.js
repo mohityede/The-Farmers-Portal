@@ -13,11 +13,15 @@ function isAuthenticedUser(req,res,next){
     res.redirect('/login');
 }
 
+router.get('/about',(req,res)=>{
+    res.render('other/about');
+});
+
 router.get('/profile',isAuthenticedUser,(req,res)=>{
     res.render('user/profile');
 })
 
-router.get('/farmer/profile/:id', (req,res)=>{
+router.get('/farmer/profile/:id',isAuthenticedUser, (req,res)=>{
     let searchQuary = { _id: req.params.id };
     User.findOne(searchQuary)
         .then(user => {
@@ -34,9 +38,8 @@ router.get('/profile/edit',isAuthenticedUser,(req,res)=>{
 
 router.get('/farmers',(req,res)=>{
     User.find({},(err, user)=>{
-
         if(err){
-            console.log("error during fatching data");
+            console.log("error during fatching farmers data ");
             return;
         }
         return res.render('user/allFarmers',{
@@ -47,9 +50,8 @@ router.get('/farmers',(req,res)=>{
 
 router.get('/consumers',(req,res)=>{
     User.find({},(err, user)=>{
-
         if(err){
-            console.log("error during fatching data");
+            console.log("error during fatching consumer data");
             return;
         }
         return res.render('user/allConsumers',{
@@ -61,7 +63,6 @@ router.get('/consumers',(req,res)=>{
 // Post requests
 router.post('/profile/edit/:id',isAuthenticedUser,(req,res)=>{
     let sQuary = {_id:req.params.id};
-
     User.updateOne(sQuary,{
         $set:{
             name: req.body.name,
@@ -72,6 +73,12 @@ router.post('/profile/edit/:id',isAuthenticedUser,(req,res)=>{
                 district: req.body.district,
                 state: req.body.state,
                 pin: req.body.pin
+            },
+            bankDetails:{
+                bankName: req.body.bankName,
+                accNum: req.body.accNum,
+                ifsc: req.body.ifsc,
+                branch: req.body.branch
             },
             org:req.body.org,
         }

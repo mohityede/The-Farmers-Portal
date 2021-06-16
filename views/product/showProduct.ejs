@@ -1,10 +1,7 @@
 <%- include('../partial/header') -%>
   <link rel="stylesheet" href="/css/products/show.css">
-<link rel="stylesheet" href="/css/products/wishlist.css">
+  <link rel="stylesheet" href="/css/products/wishlist.css">
 
-  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-
-  <!-- Product Details -->
   <section class="section product-detail">
     <div class="details container-md">
       <div class="left">
@@ -20,11 +17,8 @@
                 </div>
                 <% } %>
                   <% } %>
-
-
                     <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
                     <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
-
         </div>
 
       </div>
@@ -36,19 +30,19 @@
         <div class="price">Price: ₹ <%= pro.price %> /kg</div>
         <br>
         <div class="price">Available: <%= pro.available %>kg</div>
-
         <% if(currUser){ %>
           <% if(currUser.role!="Farmer" ){ %>
 
             <form class="form">
-
               <a href="/product/wishlist/add/?userId=<%= currUser._id %>&proId=<%= pro._id %>" class="addCart">Add to
                 Wishlist</a>
             </form>
             <hr>
 
             <form class="form" action="/cart/add/?userId=<%= currUser._id %>&proId=<%= pro._id %>" method="POST">
-              <input style="width: 100px;" type="number" placeholder="<%= pro.available %>" max="<%= pro.available %>" name="quantity" required>
+              <input style="width: 100px;" type="number" placeholder="<%= pro.available %>" max="<%= pro.available %>"
+                name="quantity" required>
+              <input style="display: none;" type="number" name="price" value="<%= pro.price %>">
               <button type="submit" class="addCart">Add to Cart</button>
 
             </form>
@@ -56,15 +50,13 @@
             <form class="form">
 
               <a href="/deal/bid/<%= pro._id %>" class="addCart">Bid</a>
-              <a href="/requestSample/?cUserName=<%= currUser.name %>&producer=<%= produc._id %>&productName=<%= pro.name %>" class="addCart">Request Sample</a>
+              <a href="/requestSample/?cUserName=<%= currUser.name %>&producer=<%= produc._id %>&productName=<%= pro.name %>"
+                class="addCart">Request Sample</a>
 
             </form>
             <hr>
             <% } %>
-
               <% } %>
-
-
 
                 <h3>Product Detail</h3>
                 <p>
@@ -78,78 +70,65 @@
                     <%= produc.name %>
                   </a> </span><br>
 
-
                 <% if(currUser) {%>
-
                   <% if(currUser._id.toString()==produc._id.toString()) { %>
                     <div>
                       <a class="btn btn-primary" href="/product/edit/<%= pro.id %>">Edit</a>
                       <a class="btn btn-danger" href="/product/delete/?id=<%= pro.id %>">Delete</a>
-
                     </div>
                     <hr>
                     <% } } %>
-
-
       </div>
     </div>
     <h1 style="text-align: center; font-size: 30px;">Bids</h1>
 
-
-    <!-- Cart Items -->
     <div style="margin-bottom: 100px;" class="container-md">
       <table>
         <tr>
           <th>Consumer</th>
           <th>Quantity</th>
           <th>Price</th>
-          <% if(currUser) {%>
-
-            <% if(currUser._id.toString()==produc._id.toString()) { %>
-              <th>Action</th>
-
-          <% } } %>
+          <th>Action</th>
         </tr>
 
-        <% for(let i=0;i<pro.bid.length;i++){ %>
+        <% for(let i=pro.bid.length-1;i>=0;i--){ %>
           <tr>
             <td>
               <div class="cart-info">
-
                 <div>
-
-                    <a href="/farmer/profile/<%= pro.bid[i].consumerId %>" style="font-size: 20px; color: black;">
-                      <%= pro.bid[i].consumerName %>
-                    </a>
-
-
-
+                  <a href="/farmer/profile/<%= pro.bid[i].consumerId %>" style="font-size: 20px; color: black;">
+                    <%= pro.bid[i].consumerName %>
+                  </a>
                 </div>
               </div>
             </td>
 
             <td><input type="text" value="<%= pro.bid[i].quantity %>" readonly></td>
-            <td>₹ <%= pro.bid[i].bidPrice %></td>
-            <% if(currUser) {%>
-
-              <% if(currUser._id.toString()==produc._id.toString()) { %>
-                <td>
-                  <a href="/bid/accept">
-                  <button style="background-color: green;">accept</button>
-
+            <td>₹ <%= pro.bid[i].bidPrice %>
+            </td>
+            <% if(currUser && currUser._id.toString()==produc._id.toString() && pro.bid[i].status=="incomplete" ) {%>
+              <td>
+                  <a href="/bid/accept/?consId=<%= pro.bid[i].consumerId %>&bidId=<%= pro.bid[i]._id %>&bidQuan=<%= pro.bid[i].quantity %>&bidPrice=<%= pro.bid[i].bidPrice %>"
+                    <button type="submit" style="background-color: green; color: black;">accept</button>
                   </a>
-                  <a href="/bid/reject">
+                <a
+                  href="/bid/reject/?consId=<%= pro.bid[i].consumerId %>&bidId=<%= pro.bid[i]._id %>&proName=<%= pro.name %>">
                   <button style="background-color: red;">reject</button>
+                </a>
+              </td>
 
-                  </a>
+              <% } else{ %>
+                <td>
+                  <% if(pro.bid[i].status=='rejected' ){ %>
+                    <span style="color: red;">Rejected</span>
+                    <% } else if(pro.bid[i].status=='accepted' ){ %>
+                      <span style="color: green;">Accepted</span>
+                      <% } else{ %>
+                        <span style="color: blue;">Incomplete</span>
                 </td>
-
-            <% } } %>
+                <% } } %>
           </tr>
-
-
-        <% } %>
-
+          <% } %>
       </table>
   </section>
   <script src="/js/products/show.js"></script>

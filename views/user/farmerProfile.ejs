@@ -4,8 +4,6 @@
     <div class="container">
         <div class="main-body">
 
-            <!-- /Breadcrumb -->
-
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
                     <div class="card">
@@ -24,8 +22,6 @@
                                             </a><hr>
                                         <% } %>
                                     <% } %>
-
-
                                 </div>
                             </div>
                         </div>
@@ -117,12 +113,50 @@
                                 </div>
                             </div>
                             <hr>
-
+                            <% if(cUser.role == 'Farmer'){ %>
+                            <h2 style="font-weight: bold;">Bank Details</h2>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Name of the Bank</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= cUser.bankDetails.bankName %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Account Number</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= cUser.bankDetails.accNum %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">IFSC</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= cUser.bankDetails.ifsc %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Bank Branch</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= cUser.bankDetails.branch %>
+                                </div>
+                            </div>
+                            <hr>
+                            <% } %>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

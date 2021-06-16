@@ -17,8 +17,6 @@
     box-sizing: inherit;
   }
 
-
-
   /* Hero */
   .header .hero-img {
     position: absolute;
@@ -388,13 +386,6 @@
     margin-top: 1rem;
   }
 
-  /* Brands */
-
-  }
-
-  /* ========= Footer ======== */
-
-
   /* All Products */
   .section .top {
     display: flex;
@@ -431,6 +422,3 @@
       width: 15rem;
     }
   }
-
-  /* Pagination */
-

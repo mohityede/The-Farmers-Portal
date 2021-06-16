@@ -2,11 +2,7 @@
 
 <link rel="stylesheet" href="/css/products/wishlist.css">
 
-  <!-- Cart Items -->
-
     <h1 style="text-align: center; font-size: 40px;">My Wishlist</h1>
-
-
   <div class="container-md cart">
 
     <table>
@@ -16,9 +12,7 @@
         <th>Price</th>
       </tr>
 
-
       <% for(let i=0;i<arr.length;i++){ %>
-
         <tr>
             <td>
               <div class="cart-info">
@@ -26,13 +20,10 @@
                   <img src="/img/account/logo.jpeg" alt="produt Img">
                 <% }else{ %>
                   <img src="<%= arr[i].proImg %>" alt="produt Img">
-
                 <% } %>
-
                 <div>
                   <p><a style="font-size: 20px; color: black;" href="/product/details/<%= arr[i].proId %>"><%= arr[i].proName %></a> </p>
-
-                  <br />
+                  <br/>
                   <a href="/product/wishlist/remove/?userId=<%= currUser._id %>&proId=<%= arr[i].proId %>">remove</a>
                 </div>
               </div>
@@ -41,12 +32,8 @@
             <td>₹ <%= arr[i].proPrice %></td>
           </tr>
       <% } %>
-
     </table>
-
 
   </div>
 
   <%- include('../partial/footer') -%>
-
-

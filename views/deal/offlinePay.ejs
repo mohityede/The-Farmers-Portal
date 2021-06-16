@@ -3,8 +3,6 @@
 
 <div class="main-content">
 
-    <!-- You only need this form and the form-basic.css -->
-
     <form class="form-basic" method="post" action="#">
 
         <div class="form-title-row">
@@ -14,7 +12,7 @@
         <div class="form-row">
             <label>
                 <span>Name of Bank:</span>
-                <input type="text" value="Name" name="name">
+                <input type="text" name="name">
             </label>
         </div>
 
@@ -28,8 +26,14 @@
 
         <div class="form-row">
             <label>
-                <span>Remarks</span>
-                <textarea name="details">remarsk</textarea>
+                <span>Massage</span>
+                <textarea name="msg"></textarea>
+            </label>
+        </div>
+        <div class="form-row">
+            <label>
+                <span>Payment proof</span>
+                <input type="file" name="proof">
             </label>
         </div>
 
@@ -37,9 +41,7 @@
         <div class="form-row">
             <button type="submit">Upload proof</button>
         </div>
-
     </form>
-
 </div>
 
 <%- include('../partial/footer') -%>

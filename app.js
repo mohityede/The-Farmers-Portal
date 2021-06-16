@@ -1,6 +1,6 @@
 const express = require('express');
 const { access } = require('fs/promises');
-const app= express();
+const app = express();
 
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -76,5 +76,5 @@ app.use(dealRoute);
 
 const port = process.env.PORT;
 app.listen(port,()=>{
-    console.log("server started at port 7000");
+    console.log(`Server is started on port ${port}`);
 })

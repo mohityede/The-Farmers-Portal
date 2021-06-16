@@ -4,8 +4,6 @@
     <div class="container">
         <div class="main-body">
 
-            <!-- /Breadcrumb -->
-
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
                     <div class="card">
@@ -52,8 +50,6 @@
                                                     <button class="btn btn-primary">My cart</button>
                                                 </a>
                                                 <% } %>
-
-
                                 </div>
                             </div>
                         </div>
@@ -63,6 +59,8 @@
                 <div class="col-md-8">
                     <div class="card mb-3">
                         <div class="card-body">
+                            <h2 style="font-weight: bold;">Personal Details</h2>
+                            <hr>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Full Name</p>
@@ -125,7 +123,6 @@
                                         <button type="submit" style="background-color: red;"> verify</button>
                                     </form>
                                     <% } %>
-
                                 </div>
                             </div>
                             <hr>
@@ -175,6 +172,46 @@
                                 </div>
                             </div>
                             <hr>
+                            <% if(currUser.role == 'Farmer'){ %>
+                            <h2 style="font-weight: bold;">Bank Details</h2>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Name of the Bank</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.bankDetails.bankName %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Account Number</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.bankDetails.accNum %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">IFSC</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.bankDetails.ifsc %>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Bank Branch</p>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <%= currUser.bankDetails.branch %>
+                                </div>
+                            </div>
+                            <hr>
+                            <% } %>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <a class="btn btn-info"
@@ -195,7 +232,6 @@
                                     <a class="btn btn-danger mohit" href="/logOut">Log Out</a>
                                 </div>
                             </div>
-
                             <hr>
                         </div>
                     </div>

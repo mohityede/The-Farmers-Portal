@@ -3,8 +3,6 @@
 
 <h1 style="text-align: center; font-size: 30px;">My Cart Items</h1>
 
-
-  <!-- Cart Items -->
   <div class="container-md cart">
     <table>
       <tr>
@@ -31,7 +29,7 @@
                   </p>
                 <span>Price: ₹ <%= arr[i].proPrice %></span>
                 <br />
-                <a href="/cart/remove/?userId=<%= currUser._id %>&proId=<%= arr[i].proId %>">remove</a>
+                <a href="/cart/remove/?userId=<%= currUser._id %>&cartId=<%= arr[i]._id %>&proQuan=<%= arr[i].proQuantity %>&proId=<%= arr[i].proId %>">remove</a>
               </div>
             </div>
           </td>
@@ -40,9 +38,7 @@
           <td>₹ <%= (arr[i].proPrice*arr[i].proQuantity).toFixed(2) %></td>
         </tr>
         <% subTotal+= arr[i].proPrice*arr[i].proQuantity %>
-
       <% } %>
-
     </table>
 
     <div class="total-price">
@@ -74,10 +70,6 @@
       </div>
     <% } %>
 
-
-
   </div>
 
-
   <%- include('../partial/footer') -%>
-
