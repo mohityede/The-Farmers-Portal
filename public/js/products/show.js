@@ -4,7 +4,7 @@ showDivs(slideIndex);
 function plusDivs(n) {
   showDivs(slideIndex += n);
 }
-
+// add function comment
 function showDivs(n) {
   var i;
   var x = document.getElementsByClassName("mySlides");
