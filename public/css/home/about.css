@@ -8,7 +8,7 @@
     height: 400px;
     margin: 5px;
 }
-
+/*  media */
 @media only screen and (min-width: 700px) {
     .contant-about {
         margin: 10px 20% 10px 20%;
