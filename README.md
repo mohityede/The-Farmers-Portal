@@ -1,5 +1,7 @@
 # The Farmers Portal
 
+![alt text](https://github.com/mohityede/The-Farmers-Portal/blob/main/public/uploadImg/Screenshot%20(21).png)
+
 ## Group Members
 - Mohit
 - Mahima
