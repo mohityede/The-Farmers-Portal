@@ -30,3 +30,13 @@
 - Web browser: Chrome or Mozilla
 - Text Editor: VS Code
 - VCS: Git and Github
+
+### Instruction to Start Project at localhost
+1. clone this repository to your local system
+2. check nodeJS,npm and MongoDB install in your system
+3. open project in VS code
+4. run `npm install` command in project root folder terminal
+5. after installing all packages run `node app.js` in terminal
+6. application runs on localhost:8000 on your browser
+
+## Happy Coding😉
